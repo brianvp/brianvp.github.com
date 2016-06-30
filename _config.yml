@@ -41,7 +41,7 @@ share:
 enableTags: true
 tagarray: []
 
-url: "brianvp.githup.io"
+url: "http://brianvp.github.io"
 baseurl: "/"
 paginate: 20
 per_page: 20
