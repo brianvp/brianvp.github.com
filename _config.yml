@@ -12,7 +12,7 @@ urls:
       icon: fa-home
       layout: post
     - text: About
-      url: /about/
+      url: /about-me.html
       icon: fa-comments
     - text: Github
       url: https://github.com/brianvp
@@ -23,15 +23,13 @@ urls:
       
 social:
     - icon: fa-facebook
-      link: '#'
-    - icon: fa-skype
-      link: '#'
+      link: 'https://www.facebook.com/brianvanderplaats'
     - icon: fa-twitter
-      link: '#'
+      link: 'https://twitter.com/Brianfromplace'
     - icon: fa-linkedin
-      link: '#'
+      link: 'https://www.linkedin.com/pub/brian-vander-plaats/94/423/802'
     - icon: fa-stack-exchange
-      link: '#'
+      link: 'http://stackoverflow.com/users/24892/brian-vander-plaats'
 
 share:
   twitter_username: \#
