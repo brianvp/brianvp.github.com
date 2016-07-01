@@ -20,6 +20,15 @@ urls:
     - text: XML Feed
       url: /feed.xml
       icon: fa-feed
+    - text: Archive
+      url: /archive
+      icon: fa-folder
+    - text: Categories
+      url: /categories
+      icon: fa-folder
+    - text: Tags
+      url: /categories
+      icon: fa-folder
       
 social:
     - icon: fa-facebook
