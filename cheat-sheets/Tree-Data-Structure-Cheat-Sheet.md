@@ -1,5 +1,5 @@
 ---
-title: Tree (Data Structure) Cheat Sheet
+title: Tree Data Structure Cheat Sheet
 layout: page
 ---
 # Tree Data Structure Cheat Sheet
