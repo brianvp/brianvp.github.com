@@ -20,8 +20,9 @@ Usually when working with ASP.Net Identity all the necessary components are ad
 
 From the Package Manager Console run:
 
-<pre class="brush: csharp; title: ; notranslate" title="">Install-Package Microsoft.AspNet.Identity.EntityFramework
-</pre>
+```
+Install-Package Microsoft.AspNet.Identity.EntityFramework
+```
 
 (this will install AspNet.Identity.Core as well)
 
@@ -29,14 +30,15 @@ From the Package Manager Console run:
 
 Create a new empty Entity Framework Code First context.   Replace the default class definition with:
 
-<pre class="brush: csharp; title: ; notranslate" title="">...
+```csharp
+...
  using Microsoft.AspNet.Identity;
  using Microsoft.AspNet.Identity.EntityFramework;
 
  public class SecurityDbContext : IdentityDbContext&lt;IdentityUser&gt;
  {
 ...
-</pre>
+```
 
 Update your web.config file to point the new context to a valid SQL Database.
 
@@ -46,13 +48,14 @@ note &#8211; If your context class overrides OnModelCreating, make sure base.On
 
 In Package Manager Console run:
 
-<pre class="brush: csharp; title: ; notranslate" title="">Enable-Migrations -EnableAutomaticMigrations
-
-</pre>
+```
+Enable-Migrations -EnableAutomaticMigrations
+```
 
 Then, optionally, you can create additional users or roles as needed in \Migrations\Configurations.cs:
 
-<pre class="brush: csharp; title: ; notranslate" title="">protected override void Seed(MyApplication.Models.SecurityDbContext context)
+```csharp
+protected override void Seed(MyApplication.Models.SecurityDbContext context)
  {
  var um = new UserManager&lt;IdentityUser&gt;(new UserStore&lt;IdentityUser&gt;(context));
 
@@ -65,14 +68,15 @@ Then, optionally, you can create additional users or roles as needed in \Migrati
 
  }
 
-</pre>
+```
 
 ### Step 4 &#8211; Update Database
 
 In Package Manger Console run
 
-<pre class="brush: csharp; title: ; notranslate" title="">Update-Database
-</pre>
+```
+Update-Database
+```
 
 The Identity tables should now exist in the database:
 
