@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
-categories: tools
+categories: Tools
 title: Tools
-permalink: /category/tools
+permalink: /category/Tools
 ---

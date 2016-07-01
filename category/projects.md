@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
-categories: projects
+categories: Projects
 title: Projects
 permalink: /category/Projects
 ---
