@@ -18,7 +18,7 @@ urls:
       url: https://github.com/brianvp
       icon: fa-github
     - text: Reading
-      url: /recommended-readings.html
+      url: /recommended-reading.html
       icon: fa-book
     - text: XML Feed
       url: /feed.xml
