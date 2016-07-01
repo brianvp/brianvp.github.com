@@ -17,7 +17,7 @@ A common SQL task is to set up new tables for an application, and while you can 
 
 Since I don’t typically create tables every day, even as a dba, I like using a basic template. You can script out a template using an existing SQL Server table, which looks like this:
 
-```
+```sql
 /****** Object: Table [product].[Category] Script Date: 10/6/2015 8:38:18 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -42,7 +42,7 @@ GO
 
 Or if you are using SQL 2012 or later you can use code snippets:
 
-```
+```sql
 CREATE TABLE dbo.Sample_Table
 (
 column_1 int NOT NULL,
@@ -52,7 +52,7 @@ column_2 int NULL
 
 I don’t care for these much (too verbose or too simplistic), so I created my own:
 
-```
+```sql
 CREATE TABLE tempdb.dbo.temp1
 (
  Temp1Id INT IDENTITY(1,1) NOT NULL
