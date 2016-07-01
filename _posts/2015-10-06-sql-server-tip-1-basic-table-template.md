@@ -7,7 +7,7 @@ layout: post
 guid: http://brianvanderplaats.com/?p=332
 permalink: /2015/10/06/sql-server-tip-1-basic-table-template/
 categories:
-  - SQL Server Tips
+  - SQL-Server-Tips
 tags:
   - SQL Server
 ---
