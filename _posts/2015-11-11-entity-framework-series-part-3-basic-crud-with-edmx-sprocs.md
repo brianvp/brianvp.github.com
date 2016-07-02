@@ -90,13 +90,15 @@ Here are a few reasons why I feel this is a valid approach:
 
 <span style="font-weight: 400;">For each sproc selected, a function import reference is added in the data model.  You can access this function by simply calling</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">db.ModelSelectByKey(modelId)
+```csharp
+db.ModelSelectByKey(modelId)
 
-</pre>
+```
 
 <span style="font-weight: 400;">If the sproc returns a resultset, a new POCO class is added to the model as well, with a name of <sproc name>_result</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public partial class ModelSelectByKey_Result
+```csharp
+public partial class ModelSelectByKey_Result
 {
  public int ModelId { get; set; }
  public string Name { get; set; }
@@ -104,11 +106,12 @@ Here are a few reasons why I feel this is a valid approach:
 ...
 }
 
-</pre>
+```
 
 <span style="font-weight: 400;">Putting this together in our sample program, here is a simple sproc call:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
 
  var models = db.ModelSelectFilter(null,null,null,null,null,null,null,null,null);
@@ -118,7 +121,7 @@ Here are a few reasons why I feel this is a valid approach:
  Console.WriteLine(model.ModelId + " | " + model.Name);
  }
 }
-</pre>
+```
 
 you can view the current list of function imports through the model browser:
   
@@ -144,7 +147,8 @@ Note you must provide a rows affected output for an identity column (ModelId) if
 
 <span style="font-weight: 400;">Below is the code for creating a new Model, and it looks no different from the standard direct table access of EF:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">int modelId = 0;
+```csharp
+int modelId = 0;
 
  using (var db = new BikeStoreEntities())
  {
@@ -159,13 +163,14 @@ modelId = model.ModelId;
 
 Console.WriteLine("New Model: " + modelId);
 
-</pre>
+```
 
 <span style="font-weight: 400;">Notice that ModelInsert has an output parameter, which isn’t supported by EF very well.  While I was able to get this sproc working while retaining the output parameter, I wasn’t able to determine how to extract the result after SaveChanges(), so I decided to simply change the ModelInsert sproc to follow the pattern of selecting the ID after insert (which is how EF would generate the T-SQL).   The happy result is that EF is able to map this to the ModelId property, so as long as you are willing to make that change, this is good.  </span>
 
 ### <span style="font-weight: 400;">Update</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
 
  var model = db.ModelSelectByKey(modelId).FirstOrDefault();
@@ -197,7 +202,7 @@ Console.WriteLine("New Model: " + modelId);
  db.SaveChanges();
  } 
  }
-</pre>
+```
 
 <span style="font-weight: 400;">Above was my first attempt at writing an update sequence, and you can see this is not an efficient solution.   Who wants to write out all those extra mapping lines?  Not to mention when fields change…  The solution is to change the ModelSelectByKey Function Import from using a complex return type of ModelSelectByKey_Result to a collection of Model entities</span>
 
@@ -207,7 +212,8 @@ Console.WriteLine("New Model: " + modelId);
 
 <span style="font-weight: 400;">Now we can simplify the code to this:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
 
  var model = db.ModelSelectByKey(modelId).FirstOrDefault();
@@ -219,13 +225,14 @@ Console.WriteLine("New Model: " + modelId);
  db.SaveChanges();
  } 
  }
-</pre>
+```
 
 <span style="font-weight: 400;">The only problem with this is if your sproc contains additional fields not part of the Model entity, they won’t be accessible.  </span>
 
 ### <span style="font-weight: 400;">Delete</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  // uses sprocs when mapping set in model
  var model = new Model { ModelId = modelId };
@@ -234,7 +241,7 @@ Console.WriteLine("New Model: " + modelId);
  db.Models.Remove(model);
  db.SaveChanges();
  }
-</pre>
+```
 
 <span style="font-weight: 400;">Not much to see here, works as expected.  At this point we’ve replicated all of the key CRUD operations in the earlier examples. Below is a trace of the entire application running in SQLProfiler:</span>
 
@@ -244,7 +251,8 @@ Console.WriteLine("New Model: " + modelId);
 
 <span style="font-weight: 400;">Before wrapping up, let’s talk about direct sproc calls.  In the example below, instead of using a function import, we can call the SqlQuery() method and pass the name of the sproc as well as any necessary parameters:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
 
  var name = new SqlParameter("@name", DBNull.Value);
@@ -266,7 +274,7 @@ Console.WriteLine("New Model: " + modelId);
  }
 
  }
-</pre>
+```
 
 <span style="font-weight: 400;">Not a very efficient technique, especially when using a number of parameters.  At this point you are simply using EF as a wrapper for ADO.NET, so if this is your main technique, why bother using EF at all?</span>
 
