@@ -14,11 +14,11 @@ tags:
   - SQL Server
   - Visual Studio
 ---
-<span style="font-weight: 400;">Over the next few months I plan on doing a bunch of research on Entity Framework, WebAPI, MVC, and AngularJS.   My focus will be on how these technologies can be used to build enterprise level applications.   To accomplish this I need a sample database that properly models typical enterprise entities.   To this end, I’ve created a database for a fictional “Bike Store”.   At the bike store, we will need to track a product catalog, inventory, customers, sales, employees, and so on.  Below is a  high level overview of the data needs:  </span>
+Over the next few months I plan on doing a bunch of research on Entity Framework, WebAPI, MVC, and AngularJS.   My focus will be on how these technologies can be used to build enterprise level applications.   To accomplish this I need a sample database that properly models typical enterprise entities.   To this end, I’ve created a database for a fictional “Bike Store”.   At the bike store, we will need to track a product catalog, inventory, customers, sales, employees, and so on.  Below is a  high level overview of the data needs: 
 
 [<img class="alignnone size-full wp-image-361" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png" alt="BikesStoreDatabaseArchitecture" width="562" height="372" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png)
 
-<span style="font-weight: 400;">At this time I’m only implementing the Product area of the database schema, but you can see how it fits into the larger theoretical schema.  This represents a fairly standard view of any enterprise. Notably we are not modeling any type of manufacturing or research entities as this is just a retail store.   The detailed product schema is as follows:</span>
+At this time I’m only implementing the Product area of the database schema, but you can see how it fits into the larger theoretical schema.  This represents a fairly standard view of any enterprise. Notably we are not modeling any type of manufacturing or research entities as this is just a retail store.   The detailed product schema is as follows:
 
 &nbsp;
 
@@ -26,11 +26,11 @@ tags:
 
 ### <span style="font-weight: 400;">Model</span>
 
-<span style="font-weight: 400;">A model represents a product, and may have one or more part numbers.  Coke and Coke Zero are two different models. Coke &#8211; 20 oz Bottle and Coke 12 oz can are two different part numbers of the Model &#8211; Coke.  Some systems do not contain an entity for model, but represent everything at the part number level. This of course, breaks <a href="https://en.wikipedia.org/wiki/First_normal_form">First Normal Form</a>.   In the bike store there are products that have variations on size / color, tied to detailed product information.  Using the Model entity allows a common profile of product information to be shared by one or more part numbers.</span>
+A model represents a product, and may have one or more part numbers.  Coke and Coke Zero are two different models. Coke &#8211; 20 oz Bottle and Coke 12 oz can are two different part numbers of the Model &#8211; Coke.  Some systems do not contain an entity for model, but represent everything at the part number level. This of course, breaks <a href="https://en.wikipedia.org/wiki/First_normal_form">First Normal Form</a>.   In the bike store there are products that have variations on size / color, tied to detailed product information.  Using the Model entity allows a common profile of product information to be shared by one or more part numbers.
 
-<span style="font-weight: 400;">A key design need is to provide a structure for storing hundreds of disparate attributes for different types of products.  Simplistic systems create dozens of columns for an entity, which leads to highly sparse records, which are not efficient for storage, and requires schema changes when new attributes are needed.   The next best thing is to create a key/value table relationship in the form of Model->ModelDataFieldValue->ModelDataFieldtype.   This works well and I’ve done this in a number of scenarios.  However for this project I’m exploring the use of JSON for this information.  For each Model entity, I simply need to have a field to store the JSON data.  Here I’m actually using two.  One for category-specific fields, and one for model-specific fields.  For example, for bicycles, I want to record the groupset, frame type, frame fit, wheelset, tires, crank dimensions, etc.   This would apply to all bicycle categories.   However for Trek I might want to also record if the bike is eligible for ProjectOne, or a special rebate, etc.  </span>
+A key design need is to provide a structure for storing hundreds of disparate attributes for different types of products.  Simplistic systems create dozens of columns for an entity, which leads to highly sparse records, which are not efficient for storage, and requires schema changes when new attributes are needed.   The next best thing is to create a key/value table relationship in the form of Model->ModelDataFieldValue->ModelDataFieldtype.   This works well and I’ve done this in a number of scenarios.  However for this project I’m exploring the use of JSON for this information.  For each Model entity, I simply need to have a field to store the JSON data.  Here I’m actually using two.  One for category-specific fields, and one for model-specific fields.  For example, for bicycles, I want to record the groupset, frame type, frame fit, wheelset, tires, crank dimensions, etc.   This would apply to all bicycle categories.   However for Trek I might want to also record if the bike is eligible for ProjectOne, or a special rebate, etc.  
 
-<span style="font-weight: 400;">Ultimately the difference looks like this:</span>
+Ultimately the difference looks like this:
 
 [<img class="alignnone size-full wp-image-363" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/TraditionalTableRelationships.png" alt="TraditionalTableRelationships" width="685" height="151" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/TraditionalTableRelationships.png)
 
@@ -95,7 +95,7 @@ Category includes Road Bikes, Saddles, Grip Tape, etc.   Both Manufacturer and
 
 Status is also standard, but note it doesn’t contain &#8220;out-of-stock&#8221;.  This is a dynamic status that should be determined by the inventory module, and could fluctuate on a daily basis, while the product is “active” the entire time.
 
-### Github, Visual Studio Database Projects
+### <span style="font-weight: 400;">Github, Visual Studio Database Projects</span>
 
 I’ve implemented the database using Visual Studio 2015 database projects.  It includes initial sample data, and can be deployed repeatedly to the same database endpoint.  For the sample data, I’m using a merge approach, loading data from tab-delimited text files. This is the first time I’ve worked with database projects and overall I’m pretty happy with the tool.
 
