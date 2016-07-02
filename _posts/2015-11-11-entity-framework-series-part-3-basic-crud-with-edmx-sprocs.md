@@ -276,8 +276,8 @@ using (var db = new BikeStoreEntities())
  }
 ```
 
-<span style="font-weight: 400;">Not a very efficient technique, especially when using a number of parameters.  At this point you are simply using EF as a wrapper for ADO.NET, so if this is your main technique, why bother using EF at all?</span>
+Not a very efficient technique, especially when using a number of parameters.  At this point you are simply using EF as a wrapper for ADO.NET, so if this is your main technique, why bother using EF at all?
 
 ## <span style="font-weight: 400;">Conclusion</span>
 
-<span style="font-weight: 400;">All in all, sproc access in EDMX is not that bad, and lets us work with entities to a large degree.  If your apps are stored procedure-centric, there is a lot of built-in support in Entity Framework that you should find useful.</span>
+All in all, sproc access in EDMX is not that bad, and lets us work with entities to a large degree.  If your apps are stored procedure-centric, there is a lot of built-in support in Entity Framework that you should find useful.
