@@ -13,7 +13,7 @@ categories:
 
 ## <span style="font-weight: 400;">ASP.NET / C# / JavaScript</span>
 
-<table style="height: 217px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="https://msdn.microsoft.com/en-us/library/dd831853(v=vs.100).aspx"><span style="font-weight: 400;">Visual Studio 2010</span></a>
@@ -87,7 +87,7 @@ categories:
 
 ## <span style="font-weight: 400;">SQL Server / Data / Reporting</span>
 
-<table style="height: 149px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="https://msdn.microsoft.com/en-us/library/ms174173(v=sql.120).aspx"><span style="font-weight: 400;">SQL Server Management Studio</span></a>
@@ -141,7 +141,7 @@ categories:
 
 ## <span style="font-weight: 400;">Design / Planning</span>
 
-<table style="height: 97px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="https://balsamiq.com/products/mockups/"><span style="font-weight: 400;">Balsamiq Mockups</span></a>
@@ -185,7 +185,7 @@ categories:
 
 ## <span style="font-weight: 400;">Source Control / ALM</span>
 
-<table style="height: 59px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="http://tortoisehg.bitbucket.org/"><span style="font-weight: 400;">TortoiseHg</span></a>
@@ -209,7 +209,7 @@ categories:
 
 ## <span style="font-weight: 400;">Communication</span>
 
-<table style="height: 71px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="https://products.office.com/en-us/outlook/email-and-calendar-software-microsoft-outlook"><span style="font-weight: 400;">Microsoft Outlook 2013</span></a>
@@ -243,7 +243,7 @@ categories:
 
 ## <span style="font-weight: 400;">Platforms</span>
 
-<table style="height: 110px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="http://windows.microsoft.com/en-us/windows/previous-support#1TC=windows-7"><span style="font-weight: 400;">Windows 7</span></a>
@@ -286,7 +286,7 @@ categories:
 
 ## <span style="font-weight: 400;">Utilities</span>
 
-<table style="height: 118px;" width="500">
+<table class="table">
   <tr>
     <td>
       <a href="https://technet.microsoft.com/en-us/scriptcenter/dd742419.aspx"><span style="font-weight: 400;">Powershell</span></a>
