@@ -130,7 +130,7 @@ tags:
 
 <pre class="brush: csharp; title: ; notranslate" title="">public class ApplicationUser : IdentityUser
 {
- public async Task&lt;ClaimsIdentity&gt; GenerateUserIdentityAsync(UserManager&lt;ApplicationUser&gt; manager)
+ public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
  {
  // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
  var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
@@ -139,7 +139,7 @@ tags:
  }
 }
 
-public class ApplicationDbContext : IdentityDbContext&lt;ApplicationUser&gt;
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
  public ApplicationDbContext()
  : base("DefaultConnection", throwIfV1Schema: false)

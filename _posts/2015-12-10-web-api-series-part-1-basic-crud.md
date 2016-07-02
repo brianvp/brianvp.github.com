@@ -111,7 +111,7 @@ The default project templates will include an MVC Homepage, various authenticati
 
 ### <span style="font-weight: 400;">SELECT</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public IQueryable&lt;Model&gt; GetModels()
+<pre class="brush: csharp; title: ; notranslate" title="">public IQueryable<Model> GetModels()
  {
 
  return db.Models;

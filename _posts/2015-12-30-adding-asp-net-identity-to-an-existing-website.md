@@ -35,7 +35,7 @@ Create a new empty Entity Framework Code First context.   Replace the default c
  using Microsoft.AspNet.Identity;
  using Microsoft.AspNet.Identity.EntityFramework;
 
- public class SecurityDbContext : IdentityDbContext&lt;IdentityUser&gt;
+ public class SecurityDbContext : IdentityDbContext<IdentityUser>
  {
 ...
 ```
@@ -57,7 +57,7 @@ Then, optionally, you can create additional users or roles as needed in \Migrati
 ```csharp
 protected override void Seed(MyApplication.Models.SecurityDbContext context)
  {
- var um = new UserManager&lt;IdentityUser&gt;(new UserStore&lt;IdentityUser&gt;(context));
+ var um = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
 
  var user = new IdentityUser()
  {

@@ -89,7 +89,7 @@ Additionally, I also wanted to force HTTPS, and I was able to find another filte
 {
  public class PartNumberPassThruController : ApiController
  {
- public async Task&lt;HttpResponseMessage&gt; GetPartNumbers()
+ public async Task<HttpResponseMessage> GetPartNumbers()
  {
  HttpResponseMessage response = null;
  string json = "";

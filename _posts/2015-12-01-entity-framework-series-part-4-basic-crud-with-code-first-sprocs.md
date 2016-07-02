@@ -60,7 +60,7 @@ tags:
  var statusName = new SqlParameter("@statusName", DBNull.Value);
  var manufacturerName = new SqlParameter("@manufacturerName", DBNull.Value);
 
- var models = db.Database.SqlQuery&lt;ModelSelectFilter_Result&gt;("product.ModelSelectFilter @name, @manufacturercode, @categoryname,@description,@features,@minListPrice,@maxListPrice,@statusName, @manufacturerName", 
+ var models = db.Database.SqlQuery<ModelSelectFilter_Result>("product.ModelSelectFilter @name, @manufacturercode, @categoryname,@description,@features,@minListPrice,@maxListPrice,@statusName, @manufacturerName", 
  name,manufacturerCode, categoryName, description, features, minListPrice,maxListPrice,statusName,manufacturerName).ToList();
 </pre>
 
@@ -71,7 +71,7 @@ tags:
 
 <span style="font-weight: 400;">Yikes.   At this point there doesn’t seem to be much difference in using raw ado.net calls or some micro ORM such as </span>[<span style="font-weight: 400;">Dapper</span>](https://github.com/StackExchange/dapper-dot-net)<span style="font-weight: 400;">, which would look something like this:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">var models = cnn.Query&lt;Model&gt;("product.ModelSelectFilter", new {name = null, manufacturerCode = null, categoryName = null, description = null, features = null, minListPrice = null, maxListPrice = null, statusName=null,manufacturerName=null }, commandType:CommandType.StoredProcedure ).ToList();
+<pre class="brush: csharp; title: ; notranslate" title="">var models = cnn.Query<Model>("product.ModelSelectFilter", new {name = null, manufacturerCode = null, categoryName = null, description = null, features = null, minListPrice = null, maxListPrice = null, statusName=null,manufacturerName=null }, commandType:CommandType.StoredProcedure ).ToList();
 </pre>
 
 <span style="font-weight: 400;">Thankfully stored procedure mapping takes some of the pain out of this.</span>
@@ -80,11 +80,11 @@ tags:
 
 Stored procedure mapping allows us perform data operations on entities as if entity framework were generating the SQL itself.  <span style="font-weight: 400;">Mapping the CUD operations takes place in the OnModelCreating() method of the dbContext class.  For each entity you wish to map to, call the MapToStoredProcedures() method:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">modelBuilder.Entity&lt;Model&gt;()
- .MapToStoredProcedures(s =&gt;
- s.Update(u =&gt; u.HasName("product.ModelUpdate"))
- .Delete( d =&gt; d.HasName("product.ModelDelete"))
- .Insert( i =&gt; i.HasName("product.ModelInsert"))
+<pre class="brush: csharp; title: ; notranslate" title="">modelBuilder.Entity<Model>()
+ .MapToStoredProcedures(s =>
+ s.Update(u => u.HasName("product.ModelUpdate"))
+ .Delete( d => d.HasName("product.ModelDelete"))
+ .Insert( i => i.HasName("product.ModelInsert"))
  );
 </pre>
 
@@ -108,7 +108,7 @@ Stored procedure mapping allows us perform data operations on entities as if ent
 
 <pre class="brush: csharp; title: ; notranslate" title="">var modelIdParam = new SqlParameter("@modelid", modelId);
 
-var model = db.Database.SqlQuery&lt;Model&gt;("product.ModelSelectByKey @modelid", modelIdParam).SingleOrDefault();
+var model = db.Database.SqlQuery<Model>("product.ModelSelectByKey @modelid", modelIdParam).SingleOrDefault();
 
 if (model != null)
 {

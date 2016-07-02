@@ -257,7 +257,7 @@ Console.WriteLine("New Model: " + modelId);
  var statusName = new SqlParameter("@statusName", DBNull.Value);
  var manufacturerName = new SqlParameter("@manufacturerName", DBNull.Value);
 
- var models = db.Database.SqlQuery&lt;ModelSelectFilter_Result&gt;("product.ModelSelectFilter @name, @manufacturercode, @categoryname,@description,@features,@minListPrice,@maxListPrice,@statusName, @manufacturerName", 
+ var models = db.Database.SqlQuery<ModelSelectFilter_Result>("product.ModelSelectFilter @name, @manufacturercode, @categoryname,@description,@features,@minListPrice,@maxListPrice,@statusName, @manufacturerName", 
  name,manufacturerCode, categoryName, description, features, minListPrice,maxListPrice,statusName,manufacturerName).ToList();
 
  foreach (var model in models)

@@ -93,7 +93,7 @@ These SQL calls were not present in any of the edmx traces &#8211; these are sup
 public BikeStoreContext()
             : base("name=BikeStoreContext")
         {
-            Database.SetInitializer&lt;BikeStoreContext&gt;(null); 
+            Database.SetInitializer<BikeStoreContext>(null); 
         }
 ```
 

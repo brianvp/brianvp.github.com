@@ -184,7 +184,7 @@ exec sp_executesql N'INSERT [product].[Model]([Name], [ManufacturerCode], [Categ
 VALUES (@0, NULL, NULL, NULL, NULL, NULL, NULL, @1, NULL, NULL, NULL, NULL, NULL)
 SELECT [ModelId]
 FROM [product].[Model]
-WHERE @@ROWCOUNT &gt; 0 AND [ModelId] = scope_identity()',N'@0 nvarchar(100),@1 decimal(19,4)',@0=N'Domane 5.2',@1=3499.9900
+WHERE @@ROWCOUNT > 0 AND [ModelId] = scope_identity()',N'@0 nvarchar(100),@1 decimal(19,4)',@0=N'Domane 5.2',@1=3499.9900
 ```
 
 Notice the select immediately following the insert operation. Scope_Identity() retrieves the identity value of ModelId for the inserted row. Entity Framework then maps this into the ModelId property of the model reference we added.
@@ -194,7 +194,7 @@ Notice the select immediately following the insert operation. Scope_Identity() r
 ```csharp
 using (var db = new BikeStoreEntities())
  {
- var model = db.Models.SingleOrDefault(b =&gt; b.ModelId == modelId);
+ var model = db.Models.SingleOrDefault(b => b.ModelId == modelId);
 
  Console.WriteLine("Selected Model:");
 
@@ -230,7 +230,7 @@ exec sp_executesql N'SELECT TOP (2)
 ```csharp
 using (var db = new BikeStoreEntities())
  {
- var model = db.Models.SingleOrDefault(b =&gt;; b.ModelId == modelId);
+ var model = db.Models.SingleOrDefault(b =>; b.ModelId == modelId);
 
  if (model != null)
  {
