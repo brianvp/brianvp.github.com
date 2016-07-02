@@ -53,12 +53,13 @@ tags:
 
 <span style="font-weight: 400;">The first step to using the new entities is to create a database context object.  I recommend sticking to the standard practice of wrapping the call in a using block:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  //do database stuff
  }
 
-</pre>
+```
 
 <span style="font-weight: 400;">The rest of this post will demonstrate six common data usage patterns:</span>
 
@@ -85,7 +86,8 @@ tags:
 
 ### <span style="font-weight: 400;">Select Table</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  var query = from m in db.Models
  orderby m.Name
@@ -99,9 +101,10 @@ foreach (var model in query)
  }
  }
 
-</pre>
+```
 
-<pre class="brush: sql; title: ; notranslate" title="">SELECT 
+```sql
+SELECT 
  [Extent1].[ModelId] AS [ModelId], 
  [Extent1].[Name] AS [Name], 
  [Extent1].[ManufacturerCode] AS [ManufacturerCode], 
@@ -118,7 +121,7 @@ foreach (var model in query)
  [Extent1].[DateCreated] AS [DateCreated]
  FROM [product].[Model] AS [Extent1]
  ORDER BY [Extent1].[Name] ASC
-</pre>
+```
 
 Note that the SQL above is not executed until the query is accessed in the foreach block. This is known as [deferred execution](https://msdn.microsoft.com/en-us/library/vstudio/bb738633(v=vs.100).aspx).  After execution, the result set is kept in memory for further iterations through the loop.
 
@@ -126,7 +129,8 @@ Note that the SQL above is not executed until the query is accessed in the forea
 
 A common SQL pattern is joining multiple tables into a custom result set.  Native SQL Code is tough to beat here, but we&#8217;ll see how Entity Framework does:
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  var query = from md in db.Models
  join pn in db.PartNumbers
@@ -143,9 +147,10 @@ A common SQL pattern is joining multiple tables into a custom result set.  Nati
  Console.WriteLine(item.ModelId + " | " + item.ModelName + " | " + item.PartNumberName + " | " + item.InventoryPartNumber + " | " + item.ListPrice + " | " + item.CategoryName);
  }
  }
-</pre>
+```
 
-<pre class="brush: sql; title: ; notranslate" title="">SELECT 
+```sql
+SELECT 
  [Extent1].[ModelId] AS [ModelId], 
  [Extent1].[Name] AS [Name], 
  [Extent2].[Name] AS [Name1], 
@@ -156,13 +161,14 @@ A common SQL pattern is joining multiple tables into a custom result set.  Nati
  INNER JOIN [product].[PartNumber] AS [Extent2] ON [Extent1].[ModelId] = [Extent2].[ModelId]
  INNER JOIN [product].[Category] AS [Extent3] ON [Extent1].[CategoryId] = [Extent3].[CategoryId]
  WHERE [Extent1].[Name] LIKE N'%tape%'
-</pre>
+```
 
 Not too bad &#8211; the linq code is very similar to the generated SQL Code.
 
 ### <span style="font-weight: 400;">Create a New Record</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```sql
+using (var db = new BikeStoreEntities())
  {
  var model = new Model { Name = "Domane 5.2", ListPrice = 3499.99m };
 
@@ -171,20 +177,22 @@ Not too bad &#8211; the linq code is very similar to the generated SQL Code.
 
  modelId = model.ModelId;
  }
-</pre>
+```
 
-<pre class="brush: sql; title: ; notranslate" title="">exec sp_executesql N'INSERT [product].[Model]([Name], [ManufacturerCode], [CategoryId], [Description], [Features], [StatusId], [ManufacturerId], [ListPrice], [ImageCollection], [CategoryCustomData], [ManufacturerCustomData], [DateModified], [DateCreated])
+```sql
+exec sp_executesql N'INSERT [product].[Model]([Name], [ManufacturerCode], [CategoryId], [Description], [Features], [StatusId], [ManufacturerId], [ListPrice], [ImageCollection], [CategoryCustomData], [ManufacturerCustomData], [DateModified], [DateCreated])
 VALUES (@0, NULL, NULL, NULL, NULL, NULL, NULL, @1, NULL, NULL, NULL, NULL, NULL)
 SELECT [ModelId]
 FROM [product].[Model]
 WHERE @@ROWCOUNT &gt; 0 AND [ModelId] = scope_identity()',N'@0 nvarchar(100),@1 decimal(19,4)',@0=N'Domane 5.2',@1=3499.9900
-</pre>
+```
 
 Notice the select immediately following the insert operation. Scope_Identity() retrieves the identity value of ModelId for the inserted row. Entity Framework then maps this into the ModelId property of the model reference we added.
 
 ### <span style="font-weight: 400;">Select a Single Record</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  var model = db.Models.SingleOrDefault(b =&gt; b.ModelId == modelId);
 
@@ -195,9 +203,10 @@ Notice the select immediately following the insert operation. Scope_Identity() r
  Console.WriteLine(model.ModelId + " | " + model.Name);
  }
  }
-</pre>
+```
 
-<pre class="brush: sql; title: ; notranslate" title="">exec sp_executesql N'SELECT TOP (2) 
+```sql
+exec sp_executesql N'SELECT TOP (2) 
  [Extent1].[ModelId] AS [ModelId], 
  [Extent1].[Name] AS [Name], 
  [Extent1].[ManufacturerCode] AS [ManufacturerCode], 
@@ -214,11 +223,12 @@ Notice the select immediately following the insert operation. Scope_Identity() r
  [Extent1].[DateCreated] AS [DateCreated]
  FROM [product].[Model] AS [Extent1]
  WHERE [Extent1].[ModelId] = @p__linq__0',N'@p__linq__0 int',@p__linq__0=11043
-</pre>
+```
 
 ### <span style="font-weight: 400;">Update a Record</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  var model = db.Models.SingleOrDefault(b =&gt;; b.ModelId == modelId);
 
@@ -229,21 +239,23 @@ Notice the select immediately following the insert operation. Scope_Identity() r
  db.SaveChanges();
  }
  }
-</pre>
+```
 
 (excluding SQL generated by SingleOrDefault()
 
-<pre class="brush: sql; title: ; notranslate" title="">exec sp_executesql N'UPDATE [product].[Model]
+```sql
+exec sp_executesql N'UPDATE [product].[Model]
 SET [Features] = @0
 WHERE ([ModelId] = @1)
 ',N'@0 nvarchar(max) ,@1 int',@0=N'500 Series OCLV Frame',@1=11043
-</pre>
+```
 
 This is quite interesting &#8211; the update statement generates a custom list of update fields based on the state of the model. Definitely a situation where auto generation of SQL is useful.  Also note that no update statement(s) are sent to SQL Server until db.SaveChanges() is called.
 
 ### <span style="font-weight: 400;">Delete a Record</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  var model = new Model { ModelId = modelId };
 
@@ -251,14 +263,15 @@ This is quite interesting &#8211; the update statement generates a custom list o
  db.Models.Remove(model);
  db.SaveChanges();
  }
-</pre>
+```
 
 Many examples have you populate an entity via single select before deleting, but the above approach does generate a select statement before deleting.
 
-<pre class="brush: sql; title: ; notranslate" title="">exec sp_executesql N'DELETE [product].[Model]
+```sql
+exec sp_executesql N'DELETE [product].[Model]
 WHERE ([ModelId] = @0)',N'@0 int',@0=11043
-</pre>
+```
 
 ## Conclusion
 
-These examples demonstrate basic access to a SQL Database through Entity Framework.  So far I am impressed with the SQL generation capabilities.  The generated SQL is basically the same as I would write if I were writing the SQL manually.  A key benefit to writing SQL is using SSMS and testing queries immediately.  While this isn&#8217;t as easy in Visual Studio, I recommend [LINQPad ](http://www.linqpad.net/)for this purpose.  It even pluralizes the entity / table names for you! (category table in database referenced as categor**ies** in LINQ)
+These examples demonstrate basic access to a SQL Database through Entity Framework.  So far I am impressed with the SQL generation capabilities.  The generated SQL is basically the same as I would write if I were writing the SQL manually.  A key benefit to writing SQL is using SSMS and testing queries immediately.  While this isn't as easy in Visual Studio, I recommend [LINQPad ](http://www.linqpad.net/)for this purpose.  It even pluralizes the entity / table names for you! (category table in database referenced as categories in LINQ)
