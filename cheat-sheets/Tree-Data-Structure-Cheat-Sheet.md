@@ -87,7 +87,7 @@ are used to ensure the tree remains balanced during insertions and deletions.  O
 #### Pointer-based
 
 Store references to parent and children
-```
+```csharp
 public class Node
 {
 	public Node Parent {get;set;}
@@ -133,7 +133,7 @@ for array-based storage
 
 An operation on a binary tree that changes the structure without interfering with the order of the elements. 
 
-```
+```csharp
 // Note these methods haven't been tested yet...
 
 // Need to update up to three edges
@@ -228,7 +228,7 @@ In a breadth-first search, all nodes on a level are visited before going to a lo
 
 A Queue is often used to peform a breadth-first search
 
-```
+```csharp
 Queue nodes = new Queue();
 StringBuilder OutputBuffer = new StringBuilder();
 nodes.Enqueue(RootNode);
@@ -254,7 +254,7 @@ while (nodes.Count > 0 )
 
 ### Recursively
 
-```
+```csharp
 public Node Search(int key, Node node)
 {
     if (node == null || Node.Key == key )
@@ -267,7 +267,7 @@ public Node Search(int key, Node node)
 ```
 
 ### Iteratively
-```
+```csharp
 public Node Search(int key, Node node)
 {
     Node current = node;
@@ -287,7 +287,7 @@ public Node Search(int key, Node node)
 
 ## BST Insertions
 
-```
+```csharp
 // Recursive
 public void Insert(Node root, int key, Object data)
 {

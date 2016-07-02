@@ -13,7 +13,7 @@ LINQ is a query language in C# and VB.NET designed for querying and updating dat
 
 
 ### Basic Select - C#
-```
+```csharp
 var query = from m in Manufacturers
 	where m.Name == "Trek" 
 	select m;
@@ -23,7 +23,7 @@ var lambda = Manufacturers.Where(m => m.Name == "Trek").Select(m => m);
 ```
 
 ### Basic Select - VB.NET
-```
+```vb
 Dim query = from m in Manufacturers
 	where m.Name = "Trek" 
 	select m
@@ -32,7 +32,7 @@ Dim lambda = Manufacturers.Where(function(m) m.Name = "Trek").Select(function(m)
 ```
 
 ### Select + new Anonymous Type - C#
-```
+```csharp
 var query = from m in Manufacturers
 	where m.Name == "Trek" 
 	select new {Name = m.Name, Key = m.ManufacturerId};
@@ -41,7 +41,7 @@ var lambda = Manufacturers.Where(m => m.Name == "Trek").Select(m=> new {Name = m
 ```
 
 ### Select + new Anonymous Type - VB.NET
-```
+```vb
 Dim query = from m in Manufacturers
 	where m.Name = "Trek" 
 	select new with {.Name = m.Name, .ManufacturerId = m.ManufacturerId}
@@ -51,7 +51,7 @@ Dim lambda = Manufacturers.Where(function(m) m.Name = "Trek").Select(function(m)
 ```
 
 ### Join - C#
-```
+```csharp
 var query = from m in Models
 		join p in PartNumbers on m.ModelId equals p.ModelId
 		where m.Name.Contains("Domane")
@@ -63,7 +63,7 @@ var lambda = Models.Join(PartNumbers, m => m.ModelId, p => p.ModelId, (m, p) => 
 ```
 
 ### Join - VB.NET
-```
+```vb
 Dim query = from m in Models
 		join p in PartNumbers on m.ModelId equals p.ModelId
 		where m.Name.Contains("Domane")
@@ -75,7 +75,7 @@ Dim lambda = Models.Join(PartNumbers, function(m) m.ModelId, function(p) p.Model
 ```
 
 ### Select Single Record - C#
-```
+```csharp
 	// Single() will throw an error if more than one result, or there is no result
 	var lambda = Statuses.Single( s => s.Name == "Active");
 
@@ -92,7 +92,7 @@ Dim lambda = Models.Join(PartNumbers, function(m) m.ModelId, function(p) p.Model
 ```
 
 ### Select Single Record - VB.Net
-```
+```vb
 	'Single() will throw an error if more than one result, or there is no result
 	Dim lambda = Statuses.Single( function(s) s.Name = "Active")
 	
