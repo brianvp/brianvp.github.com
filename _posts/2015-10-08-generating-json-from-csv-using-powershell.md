@@ -28,8 +28,9 @@ tags:
 
 ## <span style="font-weight: 400;">Step 3 &#8211; Parse the ouput file using the ConvertTo-Json powershell cmdlet, and output to a json file</span>
 
-<pre class="brush: powershell; title: ; notranslate" title="">import-csv "SampleInput.csv" | ConvertTo-Json | Add-Content -Path "output.json"
-</pre>
+```powershell
+import-csv "SampleInput.csv" | ConvertTo-Json | Add-Content -Path "output.json"
+```
 
 [<img class="alignnone wp-image-347 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png" alt="JsonCSVPowershellStep1" width="648" height="73" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png)
 
@@ -39,13 +40,15 @@ which produces the following output:
 
 ### <span style="font-weight: 400;">variation #1 &#8211; Convert from tab-delimited file</span>
 
-<pre class="brush: powershell; title: ; notranslate" title="">import-csv -Delimiter "`t" "SampleInput.txt"  | ConvertTo-Json | Add-Content -Path "output.json"
-</pre>
+```powershell
+import-csv -Delimiter "`t" "SampleInput.txt"  | ConvertTo-Json | Add-Content -Path "output.json"
+```
 
 ### <span style="font-weight: 400;">variation #2 &#8211; Remove whitespace / carriage returns from output file</span>
 
-<pre class="brush: powershell; title: ; notranslate" title="">import-csv "SampleInput.csv" | ConvertTo-Json -Compress | Add-Content -Path "output.json"
-</pre>
+```powershell
+import-csv "SampleInput.csv" | ConvertTo-Json -Compress | Add-Content -Path "output.json"
+```
 
 which produces the following output:
 
