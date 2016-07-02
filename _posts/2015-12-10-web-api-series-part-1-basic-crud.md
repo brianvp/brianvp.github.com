@@ -140,7 +140,7 @@ public IQueryable<Model> GetModels()
 ### <span style="font-weight: 400;">CREATE</span>
 
 ```csharp
->// POST: api/Models
+ // POST: api/Models
  [ResponseType(typeof(Model))]
  public IHttpActionResult PostModel(Model model)
  {
@@ -243,6 +243,7 @@ public IQueryable<Model> GetModels()
   <span style="font-weight: 400;">DELETE /</span><span style="font-weight: 400;">api/models/10000</span>
 </li>
 
+
 <span style="font-weight: 400;">In WebApiConfig.cs, the standard route table is</span>
 
 ```csharp
@@ -299,7 +300,7 @@ config.Routes.MapHttpRoute(
 
 <span style="font-weight: 400;">above SearchController.cs.PartNumberSearch()</span>
 
-<span style="font-weight: 400;">The problem is that the standard routing expects each controller to implement one set of GET methods that are related i.e. variations on ModelSearch, not ModelSearch, PartNumberSearch, Categorysearch, etc.  This could work if the search parameters are all different, but if anything that would just be a coincidence.  </span>The other approach of course is to simply create a new controller class for each type of search but that is just likely to create dozens of one-off controllers which doesn’t seem like good design…
+<span style="font-weight: 400;">The problem is that the standard routing expects each controller to implement one set of GET methods that are related i.e. variations on ModelSearch, not ModelSearch, PartNumberSearch, Categorysearch, etc.  This could work if the search parameters are all different, but if anything that would just be a coincidence.  The other approach of course is to simply create a new controller class for each type of search but that is just likely to create dozens of one-off controllers which doesn’t seem like good design…</span>
 
 ### <span style="font-weight: 400;">Parameters</span>
 
