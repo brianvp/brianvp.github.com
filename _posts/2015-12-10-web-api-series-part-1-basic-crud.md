@@ -1,6 +1,6 @@
 ---
 id: 434
-title: 'Web API Series Part 1 &#8211; Basic CRUD'
+title: 'Web API Series Part 1 - Basic CRUD'
 date: 2015-12-10T22:52:59+00:00
 author: brianvp
 layout: post
@@ -32,19 +32,19 @@ tags:
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">Resources are requested or interacted with using standard HTTP verbs:</span> <ul>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">GET &#8211; retrieve a resource</span>
+      <span style="font-weight: 400;">GET - retrieve a resource</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">POST &#8211; create a new resource</span>
+      <span style="font-weight: 400;">POST - create a new resource</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">PUT &#8211; update a resource</span>
+      <span style="font-weight: 400;">PUT - update a resource</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">PATCH &#8211; partially update a resource</span>
+      <span style="font-weight: 400;">PATCH - partially update a resource</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">DELETE &#8211; remove a resource</span>
+      <span style="font-weight: 400;">DELETE - remove a resource</span>
     </li>
   </ul>
 </li>
@@ -56,9 +56,11 @@ tags:
   <span style="font-weight: 400;">Stateless Design</span>
 </li>
 
-<span style="font-weight: 400;">The most important concept to understand is that when calling a service, we shouldn’t think in terms of executing some method, but that we are requesting or performing some action on a </span><span style="font-weight: 400;">resource</span><span style="font-weight: 400;">.  For the most part, an resource is largely the same as an entity defined in Entity Framework, so if you are familiar with that you shouldn’t have too much trouble understanding this concept.  This means that r</span>esources are nouns, not verbs.  Customers is a resource, Orders is a resource, GetCustomerOrderHistory is \*not\* a resource.  It’s actually two resources &#8211; one Customers, and two, order history.  a RESTful path looks like this: (Note that the convention is to pluralize resource names, just like in Entity  Framework.  )
+<span style="font-weight: 400;">The most important concept to understand is that when calling a service, we shouldn’t think in terms of executing some method, but that we are requesting or performing some action on a </span><span style="font-weight: 400;">resource</span><span style="font-weight: 400;">.  For the most part, an resource is largely the same as an entity defined in Entity Framework, so if you are familiar with that you shouldn’t have too much trouble understanding this concept.  This means that resources are nouns, not verbs.  Customers is a resource, Orders is a resource, GetCustomerOrderHistory is \*not\* a resource.  It’s actually two resources - one Customers, and two, order history.  a RESTful path looks like this: (Note that the convention is to pluralize resource names, just like in Entity  Framework.  )</span>
 
+```
 /api/Customers/21312/OrderHistory/
+```
 
 <span style="font-weight: 400;">As I’ll discuss later, not everything neatly maps to a resource, and that’s OK,  Pick something that makes sense, and stick with it for your application.  </span><span style="font-weight: 400;">This </span>[<span style="font-weight: 400;">blog post</span>](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)<span style="font-weight: 400;"> discusses several best practices for creating RESTful services.  Even if you aren&#8217;t publishing a public API, you should approach your API design with the same level of care as you would your front-end layout.  Your API should not be a large collection of methods, but a carefully laid out hierarchy of resources and actions.  </span>
 
@@ -87,7 +89,7 @@ The default project templates will include an MVC Homepage, various authenticati
   <span style="font-weight: 400;">Create Data Transfer Objects (DTO’s).  Create a custom object with all the properties you intended to send to the client (serialize).  This works well, and has the benefit of allowing us to create composite results (columns from multiple tables/entities), but if you just want to return a Model entity/record, it seems like unnecessary duplication.</span>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">Return anonymous types.  You can simply write a linq query that returns the fields you want.  But this doesn’t help your API documentation, which needs to be supplied a type &#8211; either the source entity or some sort of Data Transfer object.</span>
+  <span style="font-weight: 400;">Return anonymous types.  You can simply write a linq query that returns the fields you want.  But this doesn’t help your API documentation, which needs to be supplied a type - either the source entity or some sort of Data Transfer object.</span>
 </li>
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">Decorate your Navigation Properties with the [JsonIgnore] Attribute.   This doesn’t work if you need to return an XML result, but for JSON it works perfectly.  This prevents the serializer from attempting to expand your navigation properties when returning a Model, and is the solution I chose for this project.   </span>
@@ -95,7 +97,7 @@ The default project templates will include an MVC Homepage, various authenticati
 
 ## <span style="font-weight: 400;">Add WebAPI Controllers </span>
 
-<span style="font-weight: 400;">This part is simple &#8211; the default scaffolding is very good.  Right-click on the controllers folder and select Add->Controller:</span>
+<span style="font-weight: 400;">This part is simple - the default scaffolding is very good.  Right-click on the controllers folder and select Add->Controller:</span>
 
 [<img class="alignnone size-full wp-image-437" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiController.png" alt="AddNewWebApiController" width="951" height="650" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiController.png)
 
@@ -111,7 +113,8 @@ The default project templates will include an MVC Homepage, various authenticati
 
 ### <span style="font-weight: 400;">SELECT</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public IQueryable<Model> GetModels()
+```csharp
+public IQueryable<Model> GetModels()
  {
 
  return db.Models;
@@ -132,11 +135,12 @@ The default project templates will include an MVC Homepage, various authenticati
  return Ok(model);
  }
 
-</pre>
+```
 
 ### <span style="font-weight: 400;">CREATE</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">// POST: api/Models
+```csharp
+>// POST: api/Models
  [ResponseType(typeof(Model))]
  public IHttpActionResult PostModel(Model model)
  {
@@ -150,11 +154,12 @@ The default project templates will include an MVC Homepage, various authenticati
 
  return CreatedAtRoute("DefaultApi", new { id = model.ModelId }, model);
  }
-</pre>
+```
 
 ### <span style="font-weight: 400;">UPDATE</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">// PUT: api/Models/5
+```csharp
+// PUT: api/Models/5
  [ResponseType(typeof(void))]
  public IHttpActionResult PutModel(int id, Model model)
  {
@@ -188,11 +193,12 @@ The default project templates will include an MVC Homepage, various authenticati
 
  return StatusCode(HttpStatusCode.NoContent);
  }
-</pre>
+```
 
 ### <span style="font-weight: 400;">DELETE</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">// DELETE: api/Models/5
+```csharp
+// DELETE: api/Models/5
  [ResponseType(typeof(Model))]
  public IHttpActionResult DeleteModel(int id)
  {
@@ -207,7 +213,7 @@ The default project templates will include an MVC Homepage, various authenticati
 
  return Ok(model);
  }
-</pre>
+```
 
 &nbsp;
 
@@ -222,7 +228,7 @@ The default project templates will include an MVC Homepage, various authenticati
 <span style="font-weight: 400;">The main reason this looks simple is the heavy use of default routing conventions and use of HTTP methods.  </span>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">GET &#8211; </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/api/models</span></a>
+  <span style="font-weight: 400;">GET - </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/api/models</span></a>
 </li>
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">GET </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/</span></a><span style="font-weight: 400;">api/models/10000</span>
@@ -239,12 +245,13 @@ The default project templates will include an MVC Homepage, various authenticati
 
 <span style="font-weight: 400;">In WebApiConfig.cs, the standard route table is</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">config.Routes.MapHttpRoute(
+```csharp
+config.Routes.MapHttpRoute(
  name: "DefaultApi",
  routeTemplate: "api/{controller}/{id}",
  defaults: new { id = RouteParameter.Optional }
  ); 
-</pre>
+```
 
 <span style="font-weight: 400;">When a HTTP GET request is received for </span>[<span style="font-weight: 400;">/api/models</span>](http://mysite.com/api/models)<span style="font-weight: 400;">, this route is hit:</span>
 
@@ -252,7 +259,7 @@ The default project templates will include an MVC Homepage, various authenticati
   <b>api/</b><span style="font-weight: 400;">{controller}/{id} -> </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/</span><b>api/</b><span style="font-weight: 400;">models</span></a>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">api/{</span><b>controller</b><span style="font-weight: 400;">}/{id} -> </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/api</span><b>/models</b></a> <span style="font-weight: 400;">&#8211; this takes the “models” string, adds “Controller” to look for an APIController class named “ModelsController”.  Since this class exists, the class takes over the rest of the request.</span>
+  <span style="font-weight: 400;">api/{</span><b>controller</b><span style="font-weight: 400;">}/{id} -> </span><a href="http://mysite.com/api/models"><span style="font-weight: 400;">/api</span><b>/models</b></a> <span style="font-weight: 400;">- this takes the “models” string, adds “Controller” to look for an APIController class named “ModelsController”.  Since this class exists, the class takes over the rest of the request.</span>
 </li>
 
 <span style="font-weight: 400;">Ultimately </span>[<span style="font-weight: 400;">/api/models</span>](http://mysite.com/api/models) <span style="font-weight: 400;">maps to the GetModels() method.  How does this work inside controller?  </span>
@@ -280,7 +287,7 @@ The default project templates will include an MVC Homepage, various authenticati
 
 ## <span style="font-weight: 400;">Search Operations</span>
 
-<span style="font-weight: 400;">Before looking at the test framework, there is one important type of operation we need to review &#8211; searching!  In our example search, we want to get back a list of part numbers by supplying one or more parameters.  However, we know that the query needs to join both PartNumbers and Models, so which controller does it go in?  There are two basic schools of thought here. The first way is to determine which entity is most directly related to the result set, and create a sub-resource/path.  In our case, PartNumber is a reasonable choice, so we will add a custom route/method to the PartNumber controller.  The second school of thought is to treat a search as a top-level resource itself.   Both methods are shown below.  </span>
+<span style="font-weight: 400;">Before looking at the test framework, there is one important type of operation we need to review - searching!  In our example search, we want to get back a list of part numbers by supplying one or more parameters.  However, we know that the query needs to join both PartNumbers and Models, so which controller does it go in?  There are two basic schools of thought here. The first way is to determine which entity is most directly related to the result set, and create a sub-resource/path.  In our case, PartNumber is a reasonable choice, so we will add a custom route/method to the PartNumber controller.  The second school of thought is to treat a search as a top-level resource itself.   Both methods are shown below.  </span>
 
 <span style="font-weight: 400;">In both cases, I recommend using Web API </span>[<span style="font-weight: 400;">attribute routing</span>](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)<span style="font-weight: 400;">.  Simply stated, attribute routing explicitly decorates controller methods for the HTTP Method and URL Path they are expected to process.  For example, the paths below do not fit the standard route pattern of “api/{controller}/<id></span>
 
@@ -304,7 +311,8 @@ The default project templates will include an MVC Homepage, various authenticati
 
 <span style="font-weight: 400;">/api/PartNumbers/Search?modelName=Tape</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">[Route("api/PartNumbers/Search")]
+```csharp
+[Route("api/PartNumbers/Search")]
  [ResponseType(typeof(ProductSearchResultDTO))]
  public IHttpActionResult GetPartNumberSearch(string modelName = null, string partNumberName = null)
  {
@@ -320,13 +328,14 @@ The default project templates will include an MVC Homepage, various authenticati
 
  return Ok(query);
  }
-</pre>
+```
 
 ### <span style="font-weight: 400;">Search as a Top-Level Resource</span>
 
 <span style="font-weight: 400;">/api/search/PartNumbers?modelName=Tape</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">[Route("api/Search/PartNumbers/")]
+```csharp
+[Route("api/Search/PartNumbers/")]
  [HttpGet]
  [ResponseType(typeof(ProductSearchResultDTO))]
  public IHttpActionResult PartNumberSearch(string modelName = null, string partNumberName = null) 
@@ -342,7 +351,7 @@ The default project templates will include an MVC Homepage, various authenticati
 
  return Ok(query);
  }
-</pre>
+```
 
 <span style="font-weight: 400;">For this example, I’ve left both routes in the solution, but if I had to choose, I think the sub-resource works well.  Most entities will need some sort of basic search, and I’d prefer to keep these in related controllers.   </span>
 
@@ -354,7 +363,8 @@ The default project templates will include an MVC Homepage, various authenticati
 
 &nbsp;
 
-<pre class="brush: jscript; title: ; notranslate" title="">$(document).ready(function () {
+```csharp
+$(document).ready(function () {
 
  //call to prevent later getJSON calls from firing before previous ones
  //obviously not something to do in a production app, as this blocks
@@ -438,7 +448,7 @@ The default project templates will include an MVC Homepage, various authenticati
  });
  
  } );
-</pre>
+```
 
 Here is the resulting network activity:
 
