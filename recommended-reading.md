@@ -12,7 +12,7 @@ guid: http://opt1002-qmxrkm.azurewebsites.net/?page_id=181
 
 <span style="font-weight: 400;">The following books however, are worth buying and reading in full.   Most technical books are about skimming for code examples &#8211; these books are worth reading for understanding.   I’m not claiming these are the best or must-have books in software development, but they will certainly be worth your while.  </span>
 
-<table>
+<table class="table"> 
   <tr>
     <td>
       <a href="http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/"><span style="font-weight: 400;">The Pragmatic Programmer</span></a>
@@ -57,7 +57,7 @@ guid: http://opt1002-qmxrkm.azurewebsites.net/?page_id=181
 
 <span style="font-weight: 400;">These are mostly development related with a few business / career oriented blogs</span>
 
-<table>
+<table class="table">
   <tr>
     <td>
       <a href="http://blog.codinghorror.com/"><span style="font-weight: 400;">Coding Horror</span></a>
@@ -141,7 +141,7 @@ guid: http://opt1002-qmxrkm.azurewebsites.net/?page_id=181
 
 ## <span style="font-weight: 400;">Forums / Learning</span>
 
-<table>
+<table class="table">
   <tr>
     <td>
       <a href="http://stackoverflow.com/"><span style="font-weight: 400;">stackoverflow.com</span></a>
@@ -185,7 +185,7 @@ guid: http://opt1002-qmxrkm.azurewebsites.net/?page_id=181
 
 ## <span style="font-weight: 400;">News</span>
 
-<table>
+<table class="table">
   <tr>
     <td>
       <a href="https://news.ycombinator.com/"><span style="font-weight: 400;">Hacker News</span></a>
@@ -219,7 +219,7 @@ guid: http://opt1002-qmxrkm.azurewebsites.net/?page_id=181
 
 ## <span style="font-weight: 400;">Sites I Enjoy</span>
 
-<table>
+<table class="table">
   <tr>
     <td>
       <a href="http://xkcd.com/"><span style="font-weight: 400;">xkcd</span></a>
