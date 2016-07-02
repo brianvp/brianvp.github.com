@@ -87,6 +87,7 @@ are used to ensure the tree remains balanced during insertions and deletions.  O
 #### Pointer-based
 
 Store references to parent and children
+
 ```csharp
 public class Node
 {
