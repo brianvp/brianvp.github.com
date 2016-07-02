@@ -36,7 +36,8 @@ tags:
 
 vs.
 
-<pre class="brush: plain; title: ; notranslate" title="">[
+```json
+[
     {"Crucial BX100 250GB SSD":{
         "Capacity":  "250 GB",
         "Sequential Read":  "535 MBps",
@@ -50,7 +51,7 @@ vs.
 		}
     }
 ]
-</pre>
+```
 
 (thanks to @kitroed for sending me SSD deal links while writing this post&#8230;)
 
@@ -88,9 +89,9 @@ vs.
 
 ### <span style="font-weight: 400;">Manufacturer, Category, Status</span>
 
-<span style="font-weight: 400;">Manufacturer (or “make”) is essentially the label on the product e.g. Trek.  We don’t care if Trek actually manufactures their frame, or that Bontrager is simply a label that Trek owns &#8211; at the product level these are both manufacturer&#8217;s.  At the purchasing level, we may end up buying both bontrager and trek products from the same vendor/distributor.  </span>
+Manufacturer (or “make”) is essentially the label on the product e.g. Trek.  We don’t care if Trek actually manufactures their frame, or that Bontrager is simply a label that Trek owns &#8211; at the product level these are both manufacturer&#8217;s.  At the purchasing level, we may end up buying both bontrager and trek products from the same vendor/distributor.  
 
-<span style="font-weight: 400;">Category includes Road Bikes, Saddles, Grip Tape, etc.   Both Manufacturer and Category have JSON fields.  These fields store blank sets of string/value pairs.  Will be used by product entry screens to populate the related category / manufacturer specific fields that need to be filled out.  </span>
+Category includes Road Bikes, Saddles, Grip Tape, etc.   Both Manufacturer and Category have JSON fields.  These fields store blank sets of string/value pairs.  Will be used by product entry screens to populate the related category / manufacturer specific fields that need to be filled out. 
 
 Status is also standard, but note it doesn’t contain &#8220;out-of-stock&#8221;.  This is a dynamic status that should be determined by the inventory module, and could fluctuate on a daily basis, while the product is “active” the entire time.
 
