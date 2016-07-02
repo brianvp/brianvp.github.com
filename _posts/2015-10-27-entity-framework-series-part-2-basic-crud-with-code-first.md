@@ -38,25 +38,28 @@ After you finish the wizard, your project tree will look as follows: (you should
 
 From here the code is almost identical to the edmx version, with a few key differences.  First, instead of:
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreEntities())
+```csharp
+using (var db = new BikeStoreEntities())
  {
  //do database stuff
  }
 
-</pre>
+```
 
 You  call this:
 
-<pre class="brush: csharp; title: ; notranslate" title="">using (var db = new BikeStoreContext())
+```csharp
+using (var db = new BikeStoreContext())
  {
  //do database stuff
  }
 
-</pre>
+```
 
 Second, while the SQL executed is virtually identical, the first time the context is accessed, the following SQL executes:
 
-<pre class="brush: sql; title: ; notranslate" title="">IF db_id(N'BikeStore') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'BikeStore'
+```sql
+IF db_id(N'BikeStore') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'BikeStore'
 
 SELECT Count(*)
 FROM INFORMATION_SCHEMA.TABLES AS t
@@ -82,16 +85,17 @@ SELECT TOP (1)
 [Extent1].[ModelHash] AS [ModelHash]
 FROM [dbo].[EdmMetadata] AS [Extent1]
 ORDER BY [Extent1].[Id] DESC
-</pre>
+```
 
 These SQL calls were not present in any of the edmx traces &#8211; these are support for Code First [Migrations](https://msdn.microsoft.com/en-us/data/jj591621.aspx).  We can turn this off in the constructor of our context class:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public BikeStoreContext()
+```csharp
+public BikeStoreContext()
             : base("name=BikeStoreContext")
         {
             Database.SetInitializer&lt;BikeStoreContext&gt;(null); 
         }
-</pre>
+```
 
 ## Conclusion
 
