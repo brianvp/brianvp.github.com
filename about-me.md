@@ -47,6 +47,7 @@ I’ve been a computer geek since 1986.  From ‘86 until ‘00 I was essential
 <li style="text-align: justify;">
   2014-Current (custom) <a href="https://en.wikipedia.org/wiki/List_of_Intel_Core_i5_microprocessors">Intel Core i5 4690K</a> ; <a href="https://en.wikipedia.org/wiki/Radeon_HD_4000_series">Radeon 4890 HD</a>
 </li>
+<br />
 
 I’m an avid cyclist, riding over 2,500 miles in 2015.  I also did the full week of](http://ragbrai.com/) in 2015. You can see what I’ve been up to lately on my [Strava profile](https://www.strava.com/athletes/9267467).  I’m also a classical guitarist, and a home chef, both of which I [enjoy doing poorly](https://www.chesterton.org/a-thing-worth-doing/).
 
