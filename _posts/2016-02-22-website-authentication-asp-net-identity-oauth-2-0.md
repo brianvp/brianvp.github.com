@@ -1,6 +1,6 @@
 ---
 id: 478
-title: 'Website Authentication &#8211; ASP.NET Identity &#038; OAuth 2.0'
+title: 'Website Authentication - ASP.NET Identity &#038; OAuth 2.0'
 date: 2016-02-22T20:18:21+00:00
 author: brianvp
 layout: post
@@ -21,7 +21,7 @@ tags:
 <span style="font-weight: 400;">In the next few posts, I will be exploring different authentication options for a simple front end/ back end app.  What I would like to demonstrate is the following:</span>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">Secure access to a server generated web page &#8211; in this case an ASP.NET MVC page</span>
+  <span style="font-weight: 400;">Secure access to a server generated web page - in this case an ASP.NET MVC page</span>
 </li>
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">Secure access to a web api call that will be used by a client side program, in this case AngularJS</span>
@@ -36,32 +36,32 @@ tags:
 <span style="font-weight: 400;">To do this I’ve set up a “Model Manager” website that has the following structure</span>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">/ &#8211; Home Page</span>
+  <span style="font-weight: 400;">/ - Home Page</span>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">/ModelEditor &#8211; List Of Models &#8211; ASP.NET MVC</span> <ul>
+  <span style="font-weight: 400;">/ModelEditor - List Of Models - ASP.NET MVC</span> <ul>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">/Details &#8211; View Model Info</span>
+      <span style="font-weight: 400;">/Details - View Model Info</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">/Edit &#8211; modify a model</span>
+      <span style="font-weight: 400;">/Edit - modify a model</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">/Create &#8211; add a new model</span>
+      <span style="font-weight: 400;">/Create - add a new model</span>
     </li>
   </ul>
 </li>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">/ModelEditorAngular &#8211; List of Models &#8211; AngularJS</span> <ul>
+  <span style="font-weight: 400;">/ModelEditorAngular - List of Models - AngularJS</span> <ul>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">/<model #> &#8211; View/Edit/Create individual model</span>
+      <span style="font-weight: 400;">/<model #> - View/Edit/Create individual model</span>
     </li>
   </ul>
 </li>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">/Api &#8211; ASP.NET Web API</span> <ul>
+  <span style="font-weight: 400;">/Api - ASP.NET Web API</span> <ul>
     <li style="font-weight: 400;">
       <span style="font-weight: 400;">/Models</span>
     </li>
@@ -114,21 +114,22 @@ tags:
 <span style="font-weight: 400;">To use ASP.NET Identity, you need the following</span>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">a login interface &#8211; provide by the AccountController / Account Views &#8211; I didn’t change anything from the default template</span>
+  <span style="font-weight: 400;">a login interface - provide by the AccountController / Account Views - I didn’t change anything from the default template</span>
 </li>
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">a SQL database & valid database context.     </span>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">Authentication configuration in Startup.Auth.cs &#8211; not much was changed here.  </span>
+  <span style="font-weight: 400;">Authentication configuration in Startup.Auth.cs - not much was changed here.  </span>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">a mechanism to add and assign roles &#8211; I manually assigned roles in the database directly.</span>
+  <span style="font-weight: 400;">a mechanism to add and assign roles - I manually assigned roles in the database directly.</span>
 </li>
 
 <span style="font-weight: 400;">Setting up the database & context proved to be the most challenging part of this process.  The first step is deciding whether or not you want to use the ASP.NET Identity classes as-is, or to subclass.   If you choose to subclass, you can add custom properties to the User class that will be present when the tables are created.   The convention I’ve seen is to put this customization in an IdentityModels.cs  here’s what mine looks like:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class ApplicationUser : IdentityUser
+```csharp
+public class ApplicationUser : IdentityUser
 {
  public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
  {
@@ -151,7 +152,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
  return new ApplicationDbContext();
  }
 }
-</pre>
+```
 
 <span style="font-weight: 400;">The next option is to determine if you want to let the database creation happen automatically, or to enable migrations.   I chose to enable migrations so I could create a Seed() method for setting up some default users & adding the ModelEditorRole.   Frankly I’m not a fan of the implict table creation.  During testing, I ended up creating the security tables inside the BikeStore database by accident.  And while it’s kind of neat that the first time someone logs in the tables get created automatically, why would you ever have a real application deployed this way?  </span>
 
@@ -184,10 +185,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
       <span style="font-weight: 400;">The websites client_id</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">a callback URL for the website &#8211; google will redirect back to this URL after authentication</span>
+      <span style="font-weight: 400;">a callback URL for the website - google will redirect back to this URL after authentication</span>
     </li>
     <li style="font-weight: 400;">
-      <span style="font-weight: 400;">a response_type &#8211; the type of “Grant” the application is requesting &#8211; which is typically for an “authorization code”</span>
+      <span style="font-weight: 400;">a response_type - the type of “Grant” the application is requesting - which is typically for an “authorization code”</span>
     </li>
     <li style="font-weight: 400;">
       <span style="font-weight: 400;">Scope: either a read or write level of access</span>
@@ -239,25 +240,27 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   <span style="font-weight: 400;">The application is now authorized.  </span>
 </li>
 
-<span style="font-weight: 400;">Your application is not limited to a single provider &#8211; you could allow the user to authenticate with Google, Twitter, and Facebook, all at the sametime.  However, you must decide if @brian is the same as </span>[<span style="font-weight: 400;">Brian@gmail.com</span>](mailto:Brian@gmail.com) <span style="font-weight: 400;">and </span>[<span style="font-weight: 400;">brian@facebook.com</span>](mailto:brian@facebook.com)<span style="font-weight: 400;">.  Of course you could choose to only allow a person to log in with one type of provider as well.  The point being once you have an authorization token, your application can interpret / use that token as you see fit.  </span>
+<span style="font-weight: 400;">Your application is not limited to a single provider - you could allow the user to authenticate with Google, Twitter, and Facebook, all at the sametime.  However, you must decide if @brian is the same as </span>[<span style="font-weight: 400;">Brian@gmail.com</span>](mailto:Brian@gmail.com) <span style="font-weight: 400;">and </span>[<span style="font-weight: 400;">brian@facebook.com</span>](mailto:brian@facebook.com)<span style="font-weight: 400;">.  Of course you could choose to only allow a person to log in with one type of provider as well.  The point being once you have an authorization token, your application can interpret / use that token as you see fit.  </span>
 
 <span style="font-weight: 400;">Out of the box ASP.Net supports Google, Twitter, Facebook, and Microsoft logins as authentication options.  I’m using Google for this example.   On the asp.net side, setting up google authentication is incredibly easy. You simply provide your google API key / secret in /app_start/Startup.auth.cs:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+```csharp
+app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
 {
  ClientId = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
  ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 });
-</pre>
+```
 
 <span style="font-weight: 400;">Big warning right here.  Do not actually put your API key in here!  This must come from a configuration file, and that file must not be checked into your source code.  Ever.   Exposing your API key means other people can steal it and incur charges against your account.  Hardcoding your API key means that if you need to change your credentials or they are shut off, your app simply stops working.   Scott Hanselman posted a good </span>[<span style="font-weight: 400;">article </span>](http://www.hanselman.com/blog/BestPracticesForPrivateConfigDataAndConnectionStringsInConfigurationInASPNETAndAzure.aspx)<span style="font-weight: 400;">on this.  Here I’m more or less following his advice.  Just remember to avoid checking the secret file into any type of source control, and when publishing the file, </span>[<span style="font-weight: 400;">encrypt </span>](https://msdn.microsoft.com/en-us/library/zhhddkxy.aspx)<span style="font-weight: 400;">it.  </span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+```csharp
+app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
 {
  ClientId = System.Configuration.ConfigurationManager.AppSettings["GoogleClientId"],
  ClientSecret = System.Configuration.ConfigurationManager.AppSettings["GoogleClientSecret"] 
 });
-</pre>
+```
 
 <span style="font-weight: 400;">Publishing to Azure, the Google API Key is in the application settings configuration panel:</span>
 
@@ -304,7 +307,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   <span style="font-weight: 400;">Chose your google account, and allow google to send your information to the website</span>
 </li>
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">The site will prompt you to register.   This will create a record in the identity database with your google account.  Note that your password is blank &#8211; your website never see’s your account credentials.</span>
+  <span style="font-weight: 400;">The site will prompt you to register.   This will create a record in the identity database with your google account.  Note that your password is blank - your website never see’s your account credentials.</span>
 </li>
 
 ## <span style="font-weight: 400;">Fixing Account Redirection</span>
@@ -315,7 +318,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
 <span style="font-weight: 400;">From this Stack overflow </span>[<span style="font-weight: 400;">answer</span>](http://stackoverflow.com/a/5239540/24892)<span style="font-weight: 400;">:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class AuthorizeRedirectMVCAttribute : System.Web.Mvc.AuthorizeAttribute
+```csharp
+public class AuthorizeRedirectMVCAttribute : System.Web.Mvc.AuthorizeAttribute
 {
  protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
  {
@@ -327,13 +331,14 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
  }
  }
 }
-</pre>
+```
 
 <span style="font-weight: 400;">Then, change your decorations from [Authorize] to [AuthorizeRedirectMVC].</span>
 
 <span style="font-weight: 400;">Additionally, you need to implement another [Authorize] filter for your API routes, as they do *not* use the same AuthorizeAttribute class. </span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class AuthorizeRedirectAPIAttribute : System.Web.Http.AuthorizeAttribute
+```csharp
+public class AuthorizeRedirectAPIAttribute : System.Web.Http.AuthorizeAttribute
 {
  protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
  {
@@ -345,7 +350,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
  }
  }
 }
-</pre>
+```
 
 ## <span style="font-weight: 400;">Application Security</span>
 
@@ -355,18 +360,20 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
 <span style="font-weight: 400;">All WebApi Routes are set with a default Authorize and Require HTTPS Filter.  As mentioned in a previous blog, Service endpoints should never be served over unencrypted HTTP.</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public static class WebApiConfig
+```csharp
+public static class WebApiConfig
 {
 public static void Register(HttpConfiguration config)
 {
  // Web API configuration and services
  config.Filters.Add(new AuthorizeRedirectAPIAttribute());
  config.Filters.Add(new RequireHttpsAttribute());
-</pre>
+```
 
 <span style="font-weight: 400;">The ASP.NET MVC Controller for Models use a [Authorize] attribute for the entire controller,  and an Authorize(Roles) for the editing routes  </span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">namespace ModelManagerOAuthIndividual.Controllers
+```csharp
+namespace ModelManagerOAuthIndividual.Controllers
 {
 [AuthorizeRedirectMVC]
 public class ModelEditorController : Controller
@@ -378,13 +385,14 @@ public class ModelEditorController : Controller
 public ActionResult Create()
 {
 ...
-</pre>
+```
 
-<pre></pre>
+
 
 <span style="font-weight: 400;">The Angular portion is served by an MVC Controller that has the authorize attribute.  Within the Angular routes we do not have access to the [Authorize] filters.  To add granular security within the Angular app, I created an API Security Controller:</span>
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class SecurityController : ApiController
+```csharp
+public class SecurityController : ApiController
 {
 // /api/security/UserAuthenticated
 [HttpGet]
@@ -402,11 +410,12 @@ public bool UserInRole(string roleName)
  return User.IsInRole(roleName);
 }
 }
-</pre>
+```
 
 <span style="font-weight: 400;">Inside the Angular controller, we make the security check as the user attempts to access edit mode on the model detail controller</span>
 
-<pre class="brush: jscript; title: ; notranslate" title="">$scope.enterEditMode = function () {
+```javascript
+$scope.enterEditMode = function () {
 
 $http.get("/api/security/UserInRole?roleName=ModelEditorRole").success(
  function (data) {
@@ -419,16 +428,16 @@ $http.get("/api/security/UserInRole?roleName=ModelEditorRole").success(
  $scope.inEditMode = true;
  }); 
 }
-</pre>
+```
 
-<span style="font-weight: 400;">Remember that the actual API calls to access/edit the model data are still secured through our filters.  This is an important point &#8211; you need to implement security on both the client *and* the API calls.  </span>
+<span style="font-weight: 400;">Remember that the actual API calls to access/edit the model data are still secured through our filters.  This is an important point - you need to implement security on both the client *and* the API calls.  </span>
 
 ## <span style="font-weight: 400;">Conclusion</span>
 
 <span style="font-weight: 400;">ASP.NET give you a lot of flexible tools for configuring different authentication options.  For a public site, a good strategy would be to include the following security:</span>
 
 <li style="font-weight: 400;">
-  <span style="font-weight: 400;">A selection of 2-3 different OAuth providers &#8211; I’d go with Google, Facebook, and either Microsoft or Twitter</span>
+  <span style="font-weight: 400;">A selection of 2-3 different OAuth providers - I’d go with Google, Facebook, and either Microsoft or Twitter</span>
 </li>
 <li style="font-weight: 400;">
   <span style="font-weight: 400;">A way for the users to register a normal account on your site</span>
@@ -437,4 +446,4 @@ $http.get("/api/security/UserInRole?roleName=ModelEditorRole").success(
   <span style="font-weight: 400;">A common security schema that links the different users together</span>
 </li>
 
-<span style="font-weight: 400;">It should be noted again that OAuth implementations are not static, and it’s very possible that OAuth is deprecated at some point in the future.  At the very least, you don’t want your site to stop working because google or facebook make a change! The other tradeoff is that if these services have downtime, it will impact your users.  But the number one reason for using OAuth is simply convenience for your users.  It’s more likely that a user will forget their login / password than google or facebook to be down.   I would argue that OAuth is </span>_<span style="font-weight: 400;">less</span>_ <span style="font-weight: 400;">secure &#8211; as it basically allows users to use the same key on many doors.  Implementing OAuth for a financial institution would be a bad idea &#8211; that’s basically giving the provider access to that account.   In general, most sites on the Internet would benefit from allowing OAuth.  </span>
+<span style="font-weight: 400;">It should be noted again that OAuth implementations are not static, and it’s very possible that OAuth is deprecated at some point in the future.  At the very least, you don’t want your site to stop working because google or facebook make a change! The other tradeoff is that if these services have downtime, it will impact your users.  But the number one reason for using OAuth is simply convenience for your users.  It’s more likely that a user will forget their login / password than google or facebook to be down.   I would argue that OAuth is </span>_<span style="font-weight: 400;">less</span>_ <span style="font-weight: 400;">secure - as it basically allows users to use the same key on many doors.  Implementing OAuth for a financial institution would be a bad idea - that’s basically giving the provider access to that account.   In general, most sites on the Internet would benefit from allowing OAuth.  </span>
