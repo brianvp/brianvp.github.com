@@ -58,7 +58,7 @@ logo: /static/img/brianvanderplaats.jpg
 enableTags: true
 tagarray: []
 
-url: "http://brianvanderplaats.com"
+url: "http://brianvp.github.io"
 baseurl: ""
 paginate: 5
 per_page: 5
