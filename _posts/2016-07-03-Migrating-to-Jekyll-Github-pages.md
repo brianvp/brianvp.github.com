@@ -49,7 +49,7 @@ This didn't work as seamlessly as I would have liked.  First, there is no way to
 
 A few months ago I ran into a blog that used Jekyll + GitHub Pages.  The initial feature that really turned me on was that the entire blog was hosted in a [GitHub repo](https://github.com/brianvp/brianvp.github.com)!  Editing is done in [MarkDown](https://daringfireball.net/projects/markdown/), in your editor of choice [Visual Studio Code](https://code.visualstudio.com/) is a great choice for this as it has a built-in MarkDown preview mode.  
 
-![Visual Studio Code Editing](/assets/Visual-Studio-Code-Editing.png)
+![Visual Studio Code Editing](/assets/visual-studio-code-editing.png)
 
 
 Compared to WordPress, the killer feature of Jekyll is that there is *no* database!  The site contents are all compiled into HTML during deployment, so the server only needs to serve HTML files - no server side rending per page request!  The other benefit to this is that GitHub can apparently host these sites very cheaply, because GitHub Pages is free!  And in the event I need more that what GitHub provides, I can deploy a Jekyll instance with most cloud providers (including Digital Ocean).  
