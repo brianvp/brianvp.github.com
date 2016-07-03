@@ -1,5 +1,5 @@
 title: Brian Vander Plaats
-description: Website
+description: Personal website and blog of Brian Vander Plaats. Focus on software development articles.
 author: Brian Vander Plaats
 logo: http://brianvp.github.io/static/img/avatar.png
 github: https://github.com/brianvp
@@ -47,14 +47,18 @@ social:
       link: 'http://stackoverflow.com/users/24892/brian-vander-plaats'
 
 share:
-  twitter_username: \#
+  twitter_username: brianfromplace
   fb_appid: 000000000000
 
+twitter:
+  username: brianfromplace
+
+logo: /static/img/brianvanderplaats.jpg
 
 enableTags: true
 tagarray: []
 
-url: "http://brianvp.github.io"
+url: "http://brianvanderplaats.com"
 baseurl: ""
 paginate: 5
 per_page: 5
@@ -63,3 +67,4 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll-gist
+  - jekyll-seo-tag
