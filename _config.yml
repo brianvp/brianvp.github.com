@@ -53,8 +53,6 @@ share:
 twitter:
   username: brianfromplace
 
-logo: /static/img/brianvanderplaats.jpg
-
 enableTags: true
 tagarray: []
 
@@ -67,4 +65,3 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll-gist
-  - jekyll-seo-tag

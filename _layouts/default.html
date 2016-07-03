@@ -38,7 +38,7 @@
         {% if page.image %}
           <meta content="http://brianvp.github.io/static/img/posts/{{ page.image }}" property="og:image">
         {% else %}
-          <meta content="http://brianvp.github.io/static/img/logo-high-resolution.png" property="og:image">
+          <meta content="http://brianvp.github.io/static/img/brianvanderplaats.jpg" property="og:image">
         {% endif %}
         {% if page.categories %}
           {% for category in page.categories limit:1 %}
@@ -89,7 +89,6 @@
         <link rel="stylesheet" href="{{ site.url }}/static/css/thickbox.css">
         <link rel="stylesheet" href="{{ site.url }}/static/css/main.css">
         {% include analytics.html %}
-        {% seo %}
     </head>
 
     <body class="home overflow-hidden">
