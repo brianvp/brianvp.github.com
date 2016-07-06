@@ -4,7 +4,7 @@ title: 'Website Authentication - ASP.NET Identity &#038; OAuth 2.0'
 date: 2016-02-22T20:18:21+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=478
+guid: /?p=478
 permalink: /2016/02/22/website-authentication-asp-net-identity-oauth-2-0/
 categories:
   - Development
@@ -156,17 +156,17 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
 <span style="font-weight: 400;">The next option is to determine if you want to let the database creation happen automatically, or to enable migrations.   I chose to enable migrations so I could create a Seed() method for setting up some default users & adding the ModelEditorRole.   Frankly I’m not a fan of the implict table creation.  During testing, I ended up creating the security tables inside the BikeStore database by accident.  And while it’s kind of neat that the first time someone logs in the tables get created automatically, why would you ever have a real application deployed this way?  </span>
 
-[<img class="alignnone size-full wp-image-480" src="http://brianvanderplaats.com/wp-content/uploads/2016/02/ModelManagerSecurityDb.png" alt="ModelManagerSecurityDb" width="792" height="349" />](http://brianvanderplaats.com/wp-content/uploads/2016/02/ModelManagerSecurityDb.png)
+[<img class="alignnone size-full wp-image-480" src="/wp-content/uploads/2016/02/ModelManagerSecurityDb.png" alt="ModelManagerSecurityDb" width="792" height="349" />](/wp-content/uploads/2016/02/ModelManagerSecurityDb.png)
 
 <span style="font-weight: 400;">Once up and running, the logon process is very simple:</span>
 
-[<img class="alignnone size-full wp-image-481" src="http://brianvanderplaats.com/wp-content/uploads/2016/02/UserLogin.png" alt="UserLogin" width="641" height="405" />](http://brianvanderplaats.com/wp-content/uploads/2016/02/UserLogin.png)
+[<img class="alignnone size-full wp-image-481" src="/wp-content/uploads/2016/02/UserLogin.png" alt="UserLogin" width="641" height="405" />](/wp-content/uploads/2016/02/UserLogin.png)
 
-[<img class="alignnone size-full wp-image-482" src="http://brianvanderplaats.com/wp-content/uploads/2016/02/User_logged_in.png" alt="User_logged_in" width="694" height="204" />](http://brianvanderplaats.com/wp-content/uploads/2016/02/User_logged_in.png)
+[<img class="alignnone size-full wp-image-482" src="/wp-content/uploads/2016/02/User_logged_in.png" alt="User_logged_in" width="694" height="204" />](/wp-content/uploads/2016/02/User_logged_in.png)
 
 <span style="font-weight: 400;">Here’s what a user looks like</span>
 
-[<img class="alignnone size-full wp-image-483" src="http://brianvanderplaats.com/wp-content/uploads/2016/02/user_record.png" alt="user_record" width="974" height="48" />](http://brianvanderplaats.com/wp-content/uploads/2016/02/user_record.png)
+[<img class="alignnone size-full wp-image-483" src="/wp-content/uploads/2016/02/user_record.png" alt="user_record" width="974" height="48" />](/wp-content/uploads/2016/02/user_record.png)
 
 ## <span style="font-weight: 400;">OAuth 2.0 Authentication</span>
 
@@ -266,7 +266,7 @@ app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
 
 &nbsp;
 
-[<img class="alignnone size-full wp-image-484" src="http://brianvanderplaats.com/wp-content/uploads/2016/02/GoogleApiKeyStorage.png" alt="GoogleApiKeyStorage" width="554" height="180" />](http://brianvanderplaats.com/wp-content/uploads/2016/02/GoogleApiKeyStorage.png)
+[<img class="alignnone size-full wp-image-484" src="/wp-content/uploads/2016/02/GoogleApiKeyStorage.png" alt="GoogleApiKeyStorage" width="554" height="180" />](/wp-content/uploads/2016/02/GoogleApiKeyStorage.png)
 
 <span style="font-weight: 400;">The bulk of the work involves setting up your google account to allow your website to talk to google.  I’m following the steps outlined in this <a href="http://www.asp.net/mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goo">article</a>.  I will show you the steps I took here, but keep in mind that Google can change their services at any time.  This is the main trade off to using a third party, you simply don’t have control over what they do on their end.  The good news is that 3rd party authentication is really popular, and doesn’t look to be going away any time soon…  </span>
 

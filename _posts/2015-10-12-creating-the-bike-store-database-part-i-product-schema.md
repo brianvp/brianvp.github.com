@@ -4,7 +4,7 @@ title: 'Creating the Bike Store Database &#8211; Part I &#8211; Product Schema'
 date: 2015-10-12T22:03:44+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=360
+guid: /?p=360
 permalink: /2015/10/12/creating-the-bike-store-database-part-i-product-schema/
 categories:
   - Projects
@@ -16,13 +16,13 @@ tags:
 ---
 Over the next few months I plan on doing a bunch of research on Entity Framework, WebAPI, MVC, and AngularJS.   My focus will be on how these technologies can be used to build enterprise level applications.   To accomplish this I need a sample database that properly models typical enterprise entities.   To this end, I’ve created a database for a fictional “Bike Store”.   At the bike store, we will need to track a product catalog, inventory, customers, sales, employees, and so on.  Below is a  high level overview of the data needs: 
 
-[<img class="alignnone size-full wp-image-361" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png" alt="BikesStoreDatabaseArchitecture" width="562" height="372" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png)
+[<img class="alignnone size-full wp-image-361" src="/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png" alt="BikesStoreDatabaseArchitecture" width="562" height="372" />](/wp-content/uploads/2015/10/BikesStoreDatabaseArchitecture.png)
 
 At this time I’m only implementing the Product area of the database schema, but you can see how it fits into the larger theoretical schema.  This represents a fairly standard view of any enterprise. Notably we are not modeling any type of manufacturing or research entities as this is just a retail store.   The detailed product schema is as follows:
 
 &nbsp;
 
-[<img class="alignnone size-full wp-image-362" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreProductSchema.png" alt="BikeStoreProductSchema" width="433" height="551" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreProductSchema.png)
+[<img class="alignnone size-full wp-image-362" src="/wp-content/uploads/2015/10/BikeStoreProductSchema.png" alt="BikeStoreProductSchema" width="433" height="551" />](/wp-content/uploads/2015/10/BikeStoreProductSchema.png)
 
 ### <span style="font-weight: 400;">Model</span>
 
@@ -32,7 +32,7 @@ A key design need is to provide a structure for storing hundreds of disparate at
 
 Ultimately the difference looks like this:
 
-[<img class="alignnone size-full wp-image-363" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/TraditionalTableRelationships.png" alt="TraditionalTableRelationships" width="685" height="151" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/TraditionalTableRelationships.png)
+[<img class="alignnone size-full wp-image-363" src="/wp-content/uploads/2015/10/TraditionalTableRelationships.png" alt="TraditionalTableRelationships" width="685" height="151" />](/wp-content/uploads/2015/10/TraditionalTableRelationships.png)
 
 vs.
 

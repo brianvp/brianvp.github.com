@@ -4,7 +4,7 @@ title: 'Web API Series Part 1 - Basic CRUD'
 date: 2015-12-10T22:52:59+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=434
+guid: /?p=434
 permalink: /2015/12/10/web-api-series-part-1-basic-crud/
 categories:
   - Development
@@ -68,11 +68,11 @@ tags:
 
 <span style="font-weight: 400;">Setting up a Web API Project is almost identical to setting up an MVC project:</span>
 
-[<img class="alignnone size-full wp-image-435" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/CreateNewWebAPIProject.png" alt="CreateNewWebAPIProject" width="702" height="302" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/CreateNewWebAPIProject.png)
+[<img class="alignnone size-full wp-image-435" src="/wp-content/uploads/2015/12/CreateNewWebAPIProject.png" alt="CreateNewWebAPIProject" width="702" height="302" />](/wp-content/uploads/2015/12/CreateNewWebAPIProject.png)
 
 &nbsp;
 
-[<img class="alignnone size-full wp-image-436" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/WebAPIProjectTemplate.png" alt="WebAPIProjectTemplate" width="795" height="616" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/WebAPIProjectTemplate.png)
+[<img class="alignnone size-full wp-image-436" src="/wp-content/uploads/2015/12/WebAPIProjectTemplate.png" alt="WebAPIProjectTemplate" width="795" height="616" />](/wp-content/uploads/2015/12/WebAPIProjectTemplate.png)
 
 The default project templates will include an MVC Homepage, various authentication controllers, bootstrap, jquery, etc.
 
@@ -99,13 +99,13 @@ The default project templates will include an MVC Homepage, various authenticati
 
 <span style="font-weight: 400;">This part is simple - the default scaffolding is very good.  Right-click on the controllers folder and select Add->Controller:</span>
 
-[<img class="alignnone size-full wp-image-437" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiController.png" alt="AddNewWebApiController" width="951" height="650" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiController.png)
+[<img class="alignnone size-full wp-image-437" src="/wp-content/uploads/2015/12/AddNewWebApiController.png" alt="AddNewWebApiController" width="951" height="650" />](/wp-content/uploads/2015/12/AddNewWebApiController.png)
 
 <span style="font-weight: 400;">Choose the “Web API 2 Controller with actions, using Entity Framework” options</span>
 
 <span style="font-weight: 400;">You will then need to select an entity framework class & context:</span>
 
-[<img class="alignnone size-full wp-image-438" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiControllerSetName.png" alt="AddNewWebApiControllerSetName" width="596" height="231" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/AddNewWebApiControllerSetName.png)
+[<img class="alignnone size-full wp-image-438" src="/wp-content/uploads/2015/12/AddNewWebApiControllerSetName.png" alt="AddNewWebApiControllerSetName" width="596" height="231" />](/wp-content/uploads/2015/12/AddNewWebApiControllerSetName.png)
 
 ## <span style="font-weight: 400;">Reviewing the Default Scaffolding </span>
 
@@ -219,7 +219,7 @@ public IQueryable<Model> GetModels()
 
 <span style="font-weight: 400;">To test this code, simply run the solution, and type /api/models after localhost:XXXX in the address bar. You should see a JSON result for each model in the database.  Later on we will create a simple jQuery test framework to call the web methods.  </span>
 
-[<img class="alignnone size-full wp-image-439" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/TestApiModelsPath.png" alt="TestApiModelsPath" width="596" height="304" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/TestApiModelsPath.png)
+[<img class="alignnone size-full wp-image-439" src="/wp-content/uploads/2015/12/TestApiModelsPath.png" alt="TestApiModelsPath" width="596" height="304" />](/wp-content/uploads/2015/12/TestApiModelsPath.png)
 
 ## <span style="font-weight: 400;">Examining WebAPI Routing</span>
 
@@ -453,7 +453,7 @@ $(document).ready(function () {
 
 Here is the resulting network activity:
 
-[<img class="alignnone size-full wp-image-446" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/WebAPICRUDNetworkActivity.png" alt="WebAPICRUDNetworkActivity" width="749" height="224" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/WebAPICRUDNetworkActivity.png)
+[<img class="alignnone size-full wp-image-446" src="/wp-content/uploads/2015/12/WebAPICRUDNetworkActivity.png" alt="WebAPICRUDNetworkActivity" width="749" height="224" />](/wp-content/uploads/2015/12/WebAPICRUDNetworkActivity.png)
 
 ## <span style="font-weight: 400;">Final Words</span>
 

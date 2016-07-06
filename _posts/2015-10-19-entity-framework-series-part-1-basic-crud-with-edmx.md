@@ -4,7 +4,7 @@ title: 'Entity Framework Series Part 1 &#8211; Basic CRUD with EDMX'
 date: 2015-10-19T21:09:52+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=373
+guid: /?p=373
 permalink: /2015/10/19/entity-framework-series-part-1-basic-crud-with-edmx/
 categories:
   - Development
@@ -15,7 +15,7 @@ tags:
   - SQL Server
   - Visual Studio
 ---
-<span style="font-weight: 400;">As a first of a multi-part series, I am exploring <a href="https://msdn.microsoft.com/en-us/data/ee712907.aspx">Entity Framework 6.X</a>.  My goal is to begin with simple examples, working up to using Entity Framework in a production app.  I will explore both the designer/EDMX style, as well as CodeFirst, using Visual Studio 2015.  In all cases, I will be focusing on an </span>_<span style="font-weight: 400;">existing </span>_<span style="font-weight: 400;">database &#8211; the </span>[<span style="font-weight: 400;">Bike Store</span>](http://brianvanderplaats.com/2015/10/12/creating-the-bike-store-database-part-i-product-schema/) <span style="font-weight: 400;">database.   Apparently the next version of Entity Framework, EF 7, will <a href="http://blogs.msdn.com/b/adonet/archive/2014/05/19/ef7-new-platforms-new-data-stores.aspx">not include</a> the EDMX/designer option.  Because of this, I seriously considered ignoring EDMX all together and focusing on CodeFirst, however A) Microsoft will support EF 6 for many years yet and B) I want to understand the problems EDMX is trying to solve, and see if CodeFirst is a sufficient replacement.  </span>
+<span style="font-weight: 400;">As a first of a multi-part series, I am exploring <a href="https://msdn.microsoft.com/en-us/data/ee712907.aspx">Entity Framework 6.X</a>.  My goal is to begin with simple examples, working up to using Entity Framework in a production app.  I will explore both the designer/EDMX style, as well as CodeFirst, using Visual Studio 2015.  In all cases, I will be focusing on an </span>_<span style="font-weight: 400;">existing </span>_<span style="font-weight: 400;">database &#8211; the </span>[<span style="font-weight: 400;">Bike Store</span>](/2015/10/12/creating-the-bike-store-database-part-i-product-schema/) <span style="font-weight: 400;">database.   Apparently the next version of Entity Framework, EF 7, will <a href="http://blogs.msdn.com/b/adonet/archive/2014/05/19/ef7-new-platforms-new-data-stores.aspx">not include</a> the EDMX/designer option.  Because of this, I seriously considered ignoring EDMX all together and focusing on CodeFirst, however A) Microsoft will support EF 6 for many years yet and B) I want to understand the problems EDMX is trying to solve, and see if CodeFirst is a sufficient replacement.  </span>
 
 <span style="font-weight: 400;">For this first post, we will look at simple </span>[<span style="font-weight: 400;">CRUD</span>](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) <span style="font-weight: 400;">operations using an EDMX model.  You can see the full code on <a href="https://github.com/brianvp/entityframework-examples/tree/master/EDMXBasicCRUD">github</a>. </span>
 
@@ -23,31 +23,31 @@ tags:
 
 <span style="font-weight: 400;">The simplest approach to demonstrate EDMX is using a console application.  After creating the project, you&#8217;ll need to add a new ADO.Net Entity Data Model:</span>
 
-[<img class="alignnone size-full wp-image-374" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/AddNewEntityDataModel.png" alt="AddNewEntityDataModel" width="938" height="657" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/AddNewEntityDataModel.png)
+[<img class="alignnone size-full wp-image-374" src="/wp-content/uploads/2015/10/AddNewEntityDataModel.png" alt="AddNewEntityDataModel" width="938" height="657" />](/wp-content/uploads/2015/10/AddNewEntityDataModel.png)
 
 <span style="font-weight: 400;">Choose the EF Designer From database option:</span>
 
-[<img class="alignnone size-full wp-image-375" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardEFDesignerFromDatabase.png" alt="EntityDataModelWizardEFDesignerFromDatabase" width="629" height="562" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardEFDesignerFromDatabase.png)
+[<img class="alignnone size-full wp-image-375" src="/wp-content/uploads/2015/10/EntityDataModelWizardEFDesignerFromDatabase.png" alt="EntityDataModelWizardEFDesignerFromDatabase" width="629" height="562" />](/wp-content/uploads/2015/10/EntityDataModelWizardEFDesignerFromDatabase.png)
 
 <span style="font-weight: 400;">Then choose which tables to bring over (you can add views and sprocs as well &#8211; I will cover this in a future post).  </span>
 
-[<img class="alignnone size-full wp-image-376" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardChooseDatabaseObjects.png" alt="EntityDataModelWizardChooseDatabaseObjects" width="626" height="560" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardChooseDatabaseObjects.png)
+[<img class="alignnone size-full wp-image-376" src="/wp-content/uploads/2015/10/EntityDataModelWizardChooseDatabaseObjects.png" alt="EntityDataModelWizardChooseDatabaseObjects" width="626" height="560" />](/wp-content/uploads/2015/10/EntityDataModelWizardChooseDatabaseObjects.png)
 
 <span style="font-weight: 400;">Select version 6.X:</span>
 
-[<img class="alignnone size-full wp-image-377" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardChooseEFVersion.png" alt="EntityDataModelWizardChooseEFVersion" width="621" height="552" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/EntityDataModelWizardChooseEFVersion.png)
+[<img class="alignnone size-full wp-image-377" src="/wp-content/uploads/2015/10/EntityDataModelWizardChooseEFVersion.png" alt="EntityDataModelWizardChooseEFVersion" width="621" height="552" />](/wp-content/uploads/2015/10/EntityDataModelWizardChooseEFVersion.png)
 
 <span style="font-weight: 400;">With the wizard completed, your project will contain a new .edmx file and a sub-tree containing the POCO classes, context class, templates, and designer files:</span>
 
-[<img class="alignnone size-full wp-image-378" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelEDMXFileLayout.png" alt="BikeStoreModelEDMXFileLayout" width="293" height="236" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelEDMXFileLayout.png)
+[<img class="alignnone size-full wp-image-378" src="/wp-content/uploads/2015/10/BikeStoreModelEDMXFileLayout.png" alt="BikeStoreModelEDMXFileLayout" width="293" height="236" />](/wp-content/uploads/2015/10/BikeStoreModelEDMXFileLayout.png)
 
 <span style="font-weight: 400;">Opening the edmx designer, the tables look as follows (after manual positioning):</span>
 
-[<img class="alignnone size-full wp-image-379" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelEDMXLayout.png" alt="BikeStoreModelEDMXLayout" width="463" height="868" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelEDMXLayout.png)
+[<img class="alignnone size-full wp-image-379" src="/wp-content/uploads/2015/10/BikeStoreModelEDMXLayout.png" alt="BikeStoreModelEDMXLayout" width="463" height="868" />](/wp-content/uploads/2015/10/BikeStoreModelEDMXLayout.png)
 
 <span style="font-weight: 400;">In solution explorer, if you select the edmx file, a new tab appears that displays a sub-tree of model contents (note this is where sprocs can be added to the model)</span>
 
-[<img class="alignnone size-full wp-image-380" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelModelBrowser.png" alt="BikeStoreModelModelBrowser" width="318" height="381" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/BikeStoreModelModelBrowser.png)
+[<img class="alignnone size-full wp-image-380" src="/wp-content/uploads/2015/10/BikeStoreModelModelBrowser.png" alt="BikeStoreModelModelBrowser" width="318" height="381" />](/wp-content/uploads/2015/10/BikeStoreModelModelBrowser.png)
 
 ## <span style="font-weight: 400;">Accessing the Model</span>
 

@@ -4,7 +4,7 @@ title: Generating JSON from CSV Using Powershell
 date: 2015-10-08T19:12:58+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=344
+guid: /?p=344
 permalink: /2015/10/08/generating-json-from-csv-using-powershell/
 categories:
   - General
@@ -18,13 +18,13 @@ tags:
 
 ## <span style="font-weight: 400;">Step 1 &#8211; Generate Test Data using preferred spreadsheet</span>
 
-[<img class="alignnone wp-image-345 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVExcelInput.png" alt="JsonCSVExcelInput" width="668" height="146" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVExcelInput.png)
+[<img class="alignnone wp-image-345 size-full" src="/wp-content/uploads/2015/10/JsonCSVExcelInput.png" alt="JsonCSVExcelInput" width="668" height="146" />](/wp-content/uploads/2015/10/JsonCSVExcelInput.png)
 
 ## <span style="font-weight: 400;">Step 2 &#8211; Save File as either CSV or Tab-Delimited text file</span>
 
-<img class="alignnone wp-image-346 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVSaveDialog.png" alt="JsonCSVSaveDialog" width="615" height="165" />
+<img class="alignnone wp-image-346 size-full" src="/wp-content/uploads/2015/10/JsonCSVSaveDialog.png" alt="JsonCSVSaveDialog" width="615" height="165" />
 
-[<img class="alignnone size-full wp-image-356" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVInputFile.png" alt="JsonCSVInputFile" width="641" height="129" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVInputFile.png)
+[<img class="alignnone size-full wp-image-356" src="/wp-content/uploads/2015/10/JsonCSVInputFile.png" alt="JsonCSVInputFile" width="641" height="129" />](/wp-content/uploads/2015/10/JsonCSVInputFile.png)
 
 ## <span style="font-weight: 400;">Step 3 &#8211; Parse the ouput file using the ConvertTo-Json powershell cmdlet, and output to a json file</span>
 
@@ -32,11 +32,11 @@ tags:
 import-csv "SampleInput.csv" | ConvertTo-Json | Add-Content -Path "output.json"
 ```
 
-[<img class="alignnone wp-image-347 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png" alt="JsonCSVPowershellStep1" width="648" height="73" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png)
+[<img class="alignnone wp-image-347 size-full" src="/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png" alt="JsonCSVPowershellStep1" width="648" height="73" />](/wp-content/uploads/2015/10/JsonCSVPowershellStep1.png)
 
 which produces the following output:
 
-[<img class="alignnone wp-image-348 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVJsonOutput.png" alt="JsonCSVJsonOutput" width="400" height="402" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVJsonOutput.png)
+[<img class="alignnone wp-image-348 size-full" src="/wp-content/uploads/2015/10/JsonCSVJsonOutput.png" alt="JsonCSVJsonOutput" width="400" height="402" />](/wp-content/uploads/2015/10/JsonCSVJsonOutput.png)
 
 ### <span style="font-weight: 400;">variation #1 &#8211; Convert from tab-delimited file</span>
 
@@ -52,4 +52,4 @@ import-csv "SampleInput.csv" | ConvertTo-Json -Compress | Add-Content -Path "out
 
 which produces the following output:
 
-[<img class="alignnone wp-image-349 size-full" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVJsonOutputCompressed.png" alt="JsonCSVJsonOutputCompressed" width="695" height="65" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/JsonCSVJsonOutputCompressed.png)
+[<img class="alignnone wp-image-349 size-full" src="/wp-content/uploads/2015/10/JsonCSVJsonOutputCompressed.png" alt="JsonCSVJsonOutputCompressed" width="695" height="65" />](/wp-content/uploads/2015/10/JsonCSVJsonOutputCompressed.png)
