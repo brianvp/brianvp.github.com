@@ -4,7 +4,7 @@ title: Adding ASP.NET Identity to an Existing Website
 date: 2015-12-30T20:40:00+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=450
+guid: /?p=450
 permalink: /2015/12/30/adding-asp-net-identity-to-an-existing-website/
 categories:
   - Development
@@ -80,7 +80,7 @@ Update-Database
 
 The Identity tables should now exist in the database:
 
-[<img class="alignnone size-full wp-image-451" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/IdentityTables.png" alt="IdentityTables" width="233" height="162" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/IdentityTables.png)
+[<img class="alignnone size-full wp-image-451" src="/wp-content/uploads/2015/12/IdentityTables.png" alt="IdentityTables" width="233" height="162" />](/wp-content/uploads/2015/12/IdentityTables.png)
 
 &nbsp;
 

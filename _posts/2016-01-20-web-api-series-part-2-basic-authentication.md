@@ -4,7 +4,7 @@ title: 'Web API Series Part 2 - Basic Authentication'
 date: 2016-01-20T20:31:51+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=462
+guid: /?p=462
 permalink: /2016/01/20/web-api-series-part-2-basic-authentication/
 categories:
   - Development
@@ -17,7 +17,7 @@ tags:
   - SQL Server
   - Web API
 ---
-<span style="font-weight: 400;">In the previous <a href="http://brianvanderplaats.com/2015/12/10/web-api-series-part-1-basic-crud/">article </a>on Web API, I demonstrated simple CRUD operations.   In this article I implement a security scheme using Basic Authentication.   While investigating authentication options, I was first dismissive of Basic Authentication.   Sending credentials with every request that could easily be read doesn’t seem like a very secure approach.  Then I found a blog <a href="https://www.rdegges.com/2015/why-i-love-basic-auth/">post</a> by @rdegges that raised some good points.  Essentially, basic authentication can be a valid technique if you:</span>
+<span style="font-weight: 400;">In the previous <a href="/2015/12/10/web-api-series-part-1-basic-crud/">article </a>on Web API, I demonstrated simple CRUD operations.   In this article I implement a security scheme using Basic Authentication.   While investigating authentication options, I was first dismissive of Basic Authentication.   Sending credentials with every request that could easily be read doesn’t seem like a very secure approach.  Then I found a blog <a href="https://www.rdegges.com/2015/why-i-love-basic-auth/">post</a> by @rdegges that raised some good points.  Essentially, basic authentication can be a valid technique if you:</span>
 
   * <span style="font-weight: 400;">Require HTTPS</span>
   * <span style="font-weight: 400;">Use random key pairs for the API</span>
@@ -58,7 +58,7 @@ Additionally, I also wanted to force HTTPS, and I was able to find another filte
 
 ## <span style="font-weight: 400;">Controllers</span>
 
-<span style="font-weight: 400;">The controllers are essentially the same as in the prior <a href="http://brianvanderplaats.com/2015/12/10/web-api-series-part-1-basic-crud/">article</a></span>
+<span style="font-weight: 400;">The controllers are essentially the same as in the prior <a href="/2015/12/10/web-api-series-part-1-basic-crud/">article</a></span>
 
 <span style="font-weight: 400;">Each controller has been decorated with three attributes</span>
 
@@ -140,13 +140,13 @@ namespace WebAPIBasicAuthentication.Controllers
 
 <span style="font-weight: 400;">If you access this before other tests, you will be prompted to enter a username / password.  </span>
 
-[<img class="alignnone  wp-image-463" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthLoginPrompt.png" alt="WebApiBasicAuthLoginPrompt" width="244" height="184" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthLoginPrompt.png)
+[<img class="alignnone  wp-image-463" src="/wp-content/uploads/2016/01/WebApiBasicAuthLoginPrompt.png" alt="WebApiBasicAuthLoginPrompt" width="244" height="184" />](/wp-content/uploads/2016/01/WebApiBasicAuthLoginPrompt.png)
 
 <span style="font-weight: 400;">With basic authentication, the browser caches those credentials, and they will be sent with each request.  </span>
 
 <span style="font-weight: 400;">Here’s what the header looks like (remember that the string after Basic is simply a base64 encoded version of the username/password):</span>
 
-[<img class="alignnone size-full wp-image-464" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthHeader.png" alt="WebApiBasicAuthHeader" width="939" height="208" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthHeader.png)
+[<img class="alignnone size-full wp-image-464" src="/wp-content/uploads/2016/01/WebApiBasicAuthHeader.png" alt="WebApiBasicAuthHeader" width="939" height="208" />](/wp-content/uploads/2016/01/WebApiBasicAuthHeader.png)
 
 ### <span style="font-weight: 400;">Test #2 - Execute Client-Side API Call that is valid for any authenticated user</span>
 
@@ -181,7 +181,7 @@ $.ajax({
  });
 ```
 
-[<img class="alignnone  wp-image-465" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthGeneralCall.png" alt="WebApiBasicAuthGeneralCall" width="321" height="164" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthGeneralCall.png)
+[<img class="alignnone  wp-image-465" src="/wp-content/uploads/2016/01/WebApiBasicAuthGeneralCall.png" alt="WebApiBasicAuthGeneralCall" width="321" height="164" />](/wp-content/uploads/2016/01/WebApiBasicAuthGeneralCall.png)
 
 ### <span style="font-weight: 400;">Test #3 - Execute Client-Side API Call that requires user to be in a Role</span>
 
@@ -216,7 +216,7 @@ $.ajax({
 });
 ```
 
-### [<img class="alignnone  wp-image-466" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiRestrictedCallGeneralUser.png" alt="WebApiRestrictedCallGeneralUser" width="409" height="195" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiRestrictedCallGeneralUser.png)
+### [<img class="alignnone  wp-image-466" src="/wp-content/uploads/2016/01/WebApiRestrictedCallGeneralUser.png" alt="WebApiRestrictedCallGeneralUser" width="409" height="195" />](/wp-content/uploads/2016/01/WebApiRestrictedCallGeneralUser.png)
 
 &nbsp;
 
@@ -253,7 +253,7 @@ $.ajax({
 });
 ```
 
-### [<img class="alignnone  wp-image-467" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiRestrictedCallAdvancedUser.png" alt="WebApiRestrictedCallAdvancedUser" width="378" height="259" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiRestrictedCallAdvancedUser.png)
+### [<img class="alignnone  wp-image-467" src="/wp-content/uploads/2016/01/WebApiRestrictedCallAdvancedUser.png" alt="WebApiRestrictedCallAdvancedUser" width="378" height="259" />](/wp-content/uploads/2016/01/WebApiRestrictedCallAdvancedUser.png)
   
 <span style="font-weight: 400;">Test #4 - Execute a Server-Side API call</span>
 
@@ -285,4 +285,4 @@ error: function (XMLHttpRequest, status, error) {
 }); 
 ```
 
-[<img class="alignnone  wp-image-468" src="http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthServerCall.png" alt="WebApiBasicAuthServerCall" width="362" height="224" />](http://brianvanderplaats.com/wp-content/uploads/2016/01/WebApiBasicAuthServerCall.png)
+[<img class="alignnone  wp-image-468" src="/wp-content/uploads/2016/01/WebApiBasicAuthServerCall.png" alt="WebApiBasicAuthServerCall" width="362" height="224" />](/wp-content/uploads/2016/01/WebApiBasicAuthServerCall.png)

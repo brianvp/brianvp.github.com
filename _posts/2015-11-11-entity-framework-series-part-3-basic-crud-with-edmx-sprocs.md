@@ -4,7 +4,7 @@ title: Entity Framework Series Part 3 – Basic CRUD with EDMX + Sprocs
 date: 2015-11-11T21:12:48+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=405
+guid: /?p=405
 permalink: /2015/11/11/entity-framework-series-part-3-basic-crud-with-edmx-sprocs/
 categories:
   - Development
@@ -14,7 +14,7 @@ tags:
   - SQL Server
   - Visual Studio
 ---
-<span style="font-weight: 400;">In <a href="http://brianvanderplaats.com/2015/10/19/entity-framework-series-part-1-basic-crud-with-edmx/">part I </a>of this series, I created a simple entity data model to demonstrate basic CRUD operations.  I now continue this demonstration using stored procedures exclusively.  Before going into these examples, I’d like to first discuss why one would want to use stored procedures.   </span>
+<span style="font-weight: 400;">In <a href="/2015/10/19/entity-framework-series-part-1-basic-crud-with-edmx/">part I </a>of this series, I created a simple entity data model to demonstrate basic CRUD operations.  I now continue this demonstration using stored procedures exclusively.  Before going into these examples, I’d like to first discuss why one would want to use stored procedures.   </span>
 
 ## <span style="font-weight: 400;">Why use Stored Procedures?</span>
 
@@ -86,7 +86,7 @@ Here are a few reasons why I feel this is a valid approach:
 
 <span style="font-weight: 400;">The primary way edmx interacts with sprocs is through “function imports”, and it is very easy to add these to a new or existing data model.  When in the wizard, you simply choose the sprocs you need (and you can easily add more in the future by running the Update Data Model from Database wizard):</span>
 
-[<img class="alignnone size-full wp-image-406" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/EntityDataModelAddSprocs.png" alt="EntityDataModelAddSprocs" width="621" height="559" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/EntityDataModelAddSprocs.png)
+[<img class="alignnone size-full wp-image-406" src="/wp-content/uploads/2015/11/EntityDataModelAddSprocs.png" alt="EntityDataModelAddSprocs" width="621" height="559" />](/wp-content/uploads/2015/11/EntityDataModelAddSprocs.png)
 
 <span style="font-weight: 400;">For each sproc selected, a function import reference is added in the data model.  You can access this function by simply calling</span>
 
@@ -125,7 +125,7 @@ using (var db = new BikeStoreEntities())
 
 you can view the current list of function imports through the model browser:
   
-[<img class="alignnone size-full wp-image-416" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/EdmxFunctionImports.png" alt="EdmxFunctionImports" width="351" height="507" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/EdmxFunctionImports.png)
+[<img class="alignnone size-full wp-image-416" src="/wp-content/uploads/2015/11/EdmxFunctionImports.png" alt="EdmxFunctionImports" width="351" height="507" />](/wp-content/uploads/2015/11/EdmxFunctionImports.png)
 
 ## <span style="font-weight: 400;">Stored Procedure Mapping</span>
 
@@ -133,13 +133,13 @@ you can view the current list of function imports through the model browser:
 
 <span style="font-weight: 400;">Here’s what each looks like for the Model entity</span>
 
-[<img class="alignnone size-full wp-image-407" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelInsertMapping.png" alt="ModelInsertMapping" width="794" height="326" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelInsertMapping.png)
+[<img class="alignnone size-full wp-image-407" src="/wp-content/uploads/2015/11/ModelInsertMapping.png" alt="ModelInsertMapping" width="794" height="326" />](/wp-content/uploads/2015/11/ModelInsertMapping.png)
 
 Note you must provide a rows affected output for an identity column (ModelId) if you want to access this after insert.
 
-[<img class="alignnone size-full wp-image-408" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelUpdateMapping.png" alt="ModelUpdateMapping" width="764" height="301" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelUpdateMapping.png)
+[<img class="alignnone size-full wp-image-408" src="/wp-content/uploads/2015/11/ModelUpdateMapping.png" alt="ModelUpdateMapping" width="764" height="301" />](/wp-content/uploads/2015/11/ModelUpdateMapping.png)
 
-[<img class="alignnone size-full wp-image-409" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelDeleteMapping.png" alt="ModelDeleteMapping" width="763" height="67" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/ModelDeleteMapping.png)
+[<img class="alignnone size-full wp-image-409" src="/wp-content/uploads/2015/11/ModelDeleteMapping.png" alt="ModelDeleteMapping" width="763" height="67" />](/wp-content/uploads/2015/11/ModelDeleteMapping.png)
 
 <span style="font-weight: 400;">The sprocs will be utilized when you invoke the SaveChanges() method of the context.  Note that mapping is an all or nothing approach.  You can’t use an insert sproc and then direct table access for updates &#8211; you need to provide both an insert and update sproc.  However, you do not need to provide the sproc if your code avoids that particular option i.e. you can omit the delete sproc if you never call delete on the model.  </span>
 
@@ -206,7 +206,7 @@ using (var db = new BikeStoreEntities())
 
 <span style="font-weight: 400;">Above was my first attempt at writing an update sequence, and you can see this is not an efficient solution.   Who wants to write out all those extra mapping lines?  Not to mention when fields change…  The solution is to change the ModelSelectByKey Function Import from using a complex return type of ModelSelectByKey_Result to a collection of Model entities</span>
 
-[<img class="alignnone size-full wp-image-410" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/EditFunctionImport.png" alt="EditFunctionImport" width="499" height="613" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/EditFunctionImport.png)
+[<img class="alignnone size-full wp-image-410" src="/wp-content/uploads/2015/11/EditFunctionImport.png" alt="EditFunctionImport" width="499" height="613" />](/wp-content/uploads/2015/11/EditFunctionImport.png)
 
 &nbsp;
 
@@ -245,7 +245,7 @@ using (var db = new BikeStoreEntities())
 
 <span style="font-weight: 400;">Not much to see here, works as expected.  At this point we’ve replicated all of the key CRUD operations in the earlier examples. Below is a trace of the entire application running in SQLProfiler:</span>
 
-[<img class="alignnone size-full wp-image-411" src="http://brianvanderplaats.com/wp-content/uploads/2015/11/EDMXSprocProfilerTrace.png" alt="EDMXSprocProfilerTrace" width="660" height="298" />](http://brianvanderplaats.com/wp-content/uploads/2015/11/EDMXSprocProfilerTrace.png)
+[<img class="alignnone size-full wp-image-411" src="/wp-content/uploads/2015/11/EDMXSprocProfilerTrace.png" alt="EDMXSprocProfilerTrace" width="660" height="298" />](/wp-content/uploads/2015/11/EDMXSprocProfilerTrace.png)
 
 ## <span style="font-weight: 400;">Direct Procedure Calls</span>
 

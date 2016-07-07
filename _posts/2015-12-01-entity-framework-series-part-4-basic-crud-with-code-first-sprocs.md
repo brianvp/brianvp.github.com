@@ -4,7 +4,7 @@ title: 'Entity Framework Series Part 4 &#8211; Basic CRUD with Code First + Spro
 date: 2015-12-01T20:43:33+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=423
+guid: /?p=423
 permalink: /2015/12/01/entity-framework-series-part-4-basic-crud-with-code-first-sprocs/
 categories:
   - Development
@@ -14,13 +14,13 @@ tags:
   - SQL Server
   - Visual Studio
 ---
-<span style="font-weight: 400;">In </span>[<span style="font-weight: 400;">part 3</span>](http://brianvanderplaats.com/2015/11/11/entity-framework-series-part-3-basic-crud-with-edmx-sprocs/) <span style="font-weight: 400;">of this series I demonstrated using EDMX with stored procedures only.  In this article I do the same with Code First.  As discussed previously, while sprocs may be as far from the Code First ethos as you can get, you may find yourself in a situation where conventions and existing infrastructure require heavy use of sprocs.  The example code is up at <a href="https://github.com/brianvp/entityframework-examples/tree/master/EDMXBasicCRUDSprocs">github</a>.  </span>
+<span style="font-weight: 400;">In </span>[<span style="font-weight: 400;">part 3</span>](/2015/11/11/entity-framework-series-part-3-basic-crud-with-edmx-sprocs/) <span style="font-weight: 400;">of this series I demonstrated using EDMX with stored procedures only.  In this article I do the same with Code First.  As discussed previously, while sprocs may be as far from the Code First ethos as you can get, you may find yourself in a situation where conventions and existing infrastructure require heavy use of sprocs.  The example code is up at <a href="https://github.com/brianvp/entityframework-examples/tree/master/EDMXBasicCRUDSprocs">github</a>.  </span>
 
 ## <span style="font-weight: 400;">Setting up Context and Classes</span>
 
 <span style="font-weight: 400;">The first step is to set up a new DbContext Class, and entities for your tables.   Why do we want entities if we won’t be accessing tables directly?  Because we will be using Stored Procedure mapping for the CUD operations.  Additionally, you can re-map your sproc output class to match one of the default entities e.g. Model vs ModelSelectByKey_Result.  This will be useful for the update operation later on.  </span>
 
-<span style="font-weight: 400;">You can see an example of this in </span>[<span style="font-weight: 400;">part 2</span>](http://brianvanderplaats.com/2015/10/27/entity-framework-series-part-2-basic-crud-with-code-first/)
+<span style="font-weight: 400;">You can see an example of this in </span>[<span style="font-weight: 400;">part 2</span>](/2015/10/27/entity-framework-series-part-2-basic-crud-with-code-first/)
 
 ## <span style="font-weight: 400;">Updating the Classes when the Database Changes</span>
 
@@ -144,7 +144,7 @@ var model = new Model { ModelId = modelId };
 
 <span style="font-weight: 400;">Below is the full SQL Profiler trace of the test program:</span>
 
-[<img class="alignnone size-full wp-image-428" src="http://brianvanderplaats.com/wp-content/uploads/2015/12/CodeFirstSprocProfileTrace.png" alt="CodeFirstSprocProfileTrace" width="889" height="312" />](http://brianvanderplaats.com/wp-content/uploads/2015/12/CodeFirstSprocProfileTrace.png)
+[<img class="alignnone size-full wp-image-428" src="/wp-content/uploads/2015/12/CodeFirstSprocProfileTrace.png" alt="CodeFirstSprocProfileTrace" width="889" height="312" />](/wp-content/uploads/2015/12/CodeFirstSprocProfileTrace.png)
 
 ## <span style="font-weight: 400;">Conclusion</span>
 

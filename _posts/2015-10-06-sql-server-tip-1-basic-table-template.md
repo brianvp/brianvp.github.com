@@ -4,7 +4,7 @@ title: 'SQL Server Tip #1: Basic Table Template'
 date: 2015-10-06T21:45:31+00:00
 author: brianvp
 layout: post
-guid: http://brianvanderplaats.com/?p=332
+guid: /?p=332
 permalink: /2015/10/06/sql-server-tip-1-basic-table-template/
 categories:
   - SQL-Server-Tips
@@ -13,7 +13,7 @@ tags:
 ---
 A common SQL task is to set up new tables for an application, and while you can use the GUI for this, I prefer using scripts. It’s faster, and leads to better deployment practices. (The one time I do find the designer useful is when making a column size change to a table.  In this case, I will make the change in the designer, and generate a script.  It looks ugly, but saves a lot of manual coding)
 
-[<img class="alignnone size-medium wp-image-334" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/SqlTip1_TableDesigner-241x300.png" alt="SqlTip1_TableDesigner" width="241" height="300" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/SqlTip1_TableDesigner.png)[<img class="alignnone size-medium wp-image-335" src="http://brianvanderplaats.com/wp-content/uploads/2015/10/SqlTip1_TableDesignerChangeScript-300x238.png" alt="SqlTip1_TableDesignerChangeScript" width="300" height="238" />](http://brianvanderplaats.com/wp-content/uploads/2015/10/SqlTip1_TableDesignerChangeScript.png)
+[<img class="alignnone size-medium wp-image-334" src="/wp-content/uploads/2015/10/SqlTip1_TableDesigner-241x300.png" alt="SqlTip1_TableDesigner" width="241" height="300" />](/wp-content/uploads/2015/10/SqlTip1_TableDesigner.png)[<img class="alignnone size-medium wp-image-335" src="/wp-content/uploads/2015/10/SqlTip1_TableDesignerChangeScript-300x238.png" alt="SqlTip1_TableDesignerChangeScript" width="300" height="238" />](/wp-content/uploads/2015/10/SqlTip1_TableDesignerChangeScript.png)
 
 Since I don’t typically create tables every day, even as a dba, I like using a basic template. You can script out a template using an existing SQL Server table, which looks like this:
 
