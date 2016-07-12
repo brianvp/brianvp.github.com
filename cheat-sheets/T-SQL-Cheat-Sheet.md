@@ -855,6 +855,7 @@ DECLARE @MyOrderTotalsByYear AS dbo.OrderTotalsByYear;
 
 
 #### Scalar
+
 ```sql
         CREATE FUNCTION dbo.fn_age
         (
@@ -873,7 +874,9 @@ DECLARE @MyOrderTotalsByYear AS dbo.OrderTotalsByYear;
         END
         GO
 ```
+
 #### Table Value
+
 ```sql
         ALTER FUNCTION [dbo].[Split_MultiValue_Parameter]
         (     @delimitedString    VARCHAR(MAX)
@@ -918,6 +921,7 @@ DECLARE @MyOrderTotalsByYear AS dbo.OrderTotalsByYear;
 
 
 #### DML - Data Modification
+
 ```sql
         ALTER TRIGGER  product.trProductPartNumberDateModified ON product.PartNumber FOR UPDATE AS
         DECLARE @PartNumberID INT;
@@ -929,6 +933,7 @@ DECLARE @MyOrderTotalsByYear AS dbo.OrderTotalsByYear;
 ``` 
  
 #### Structural modification
+
 ```sql
             CREATE TRIGGER [DDL_Notify]
             ON DATABASE
