@@ -1,4 +1,7 @@
-
+---
+title: T-SQL Cheat Sheet
+layout: page
+---
 
 ### Determine if object exists
 
