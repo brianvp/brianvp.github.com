@@ -13,7 +13,6 @@ tags:
   - CSS
 ---
 
-#AngularJS Introduction
 
 AngularJS is a JavaScript framework developed by Google for front-end web development. It allows creation of a class of applications known as "Single-Page-Applications" (SPA). A SPA typically loads all required code (HMTL/CSS/JavaScript) in a single page request.  In response to user actions, additional resources are loaded as necessary thru XMLHttpRequests / AJAX.  There is no postback or transfer of control to another page - to the browser the user is simply sitting on / interacting with a single page.  This architecture allows for a fluid, seamless feel to a web application, bringing it closer to what a native application feels like.  While network latency is often a limiting factor in performance, traditional web applications exacerbate this by constantly loading/reloading application components, and processing presentation details on the server.  In a SPA, shared components are typically loaded once, with page-specific content loading dynamically as needed(often only a few kilobytes).  
 
@@ -29,7 +28,7 @@ Let's see what an angular application looks like.  At the most basic level an ap
 * a definition for the main application module
 * html markup with angular bindings  
 
-```
+```html
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
@@ -77,7 +76,7 @@ applications.
 
 Like any framework, Angular has a number of key terms you should be familiar with:
 
-* **Template ** - a partial block of HTML that contains HTML and Angular bindings
+* **Template** - a partial block of HTML that contains HTML and Angular bindings
 * **View** - The rendered template displayed in the browser - a template becomes a view after Angular replaces the bindings with values
 * **Model** - The model represents the data that is available to use on the current page.  
 * **Scope** - All angular components access the Model through the scope.  What is available in the scope depends on where the element is on the current page.
