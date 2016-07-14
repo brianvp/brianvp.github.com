@@ -15,7 +15,7 @@ tags:
 
 
 This article demonstrates a basic technique for a search page in Angular.
-I've created a [demo page](https://jsfiddle.net/brnvndr/11asbstj/9/)  using JSFiddle that implements the following:
+I've created a **[demo page](https://jsfiddle.net/brnvndr/11asbstj/)**  using JSFiddle that implements the following:
 
 - Angular databinding to a repeating list
 - Using a static JSON object
@@ -93,6 +93,7 @@ Lastly, I demonstrate using the ng-class directive to apply dynamic CSS to the v
 
 1. User changes search mode by clicking on link: `<a href="#" ng-click="toggleSearch('advancedSearch')">Advanced Search</a>`
 2. `searchController` updates the current searchMode, which corresponds to the CSS class name to activate:
+
 ```javascript
 $scope.toggleSearch = function(searchMode) {
          $scope.searchMode = searchMode;
@@ -100,7 +101,9 @@ $scope.toggleSearch = function(searchMode) {
          $scope.exclude = '';
      }
 ```
+
 3. The three main view elements: `searchHeader`, `searchFilter`, `searchResults` have an `ng-class` directive, which can apply a CSS class.  When `$scope.searchMode` changes, the classes for all three will be updated.   Here is what the classes look like for the `searchResults`.  In basic mode, this div takes up the full row from left to right, but when `advancedSearch` is active, we need to shift the div over
+
 ```javascript
 .searchResults.advancedSearch {
   margin-left:250px;
