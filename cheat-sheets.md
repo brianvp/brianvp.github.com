@@ -11,3 +11,4 @@ layout: page
 - [MarkDown]({{site.baseurl}}/cheat-sheets/MarkDown-Cheat-Sheet.html)
 - [Regex]({{site.baseurl}}/cheat-sheets/Regex-Cheat-Sheet.html)
 - [Trees]({{site.baseurl}}/cheat-sheets/Tree-Data-Structure-Cheat-Sheet.html)
+- [Graphs]({{site.baseurl}}/cheat-sheets/Graph-Data-Structure-Cheat-Sheet.html)
