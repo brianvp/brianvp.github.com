@@ -28,6 +28,7 @@ Let's see what an angular application looks like.  At the most basic level an ap
 * a definition for the main application module
 * html markup with angular bindings  
 
+{% raw %}
 ```html
 <!DOCTYPE html>
 <html ng-app="myApp">
@@ -53,6 +54,7 @@ Let's see what an angular application looks like.  At the most basic level an ap
 </html>
 
 ```
+{% endraw %}
 
 The main components of this application are:
 
