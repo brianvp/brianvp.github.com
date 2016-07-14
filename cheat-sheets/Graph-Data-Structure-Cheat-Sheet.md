@@ -57,7 +57,7 @@ A graph is an abstract data type that consists of a finite set of vertices toget
  - search for a particular edge can be time intensive in an unsorted edge list
 
 
- ```python
+```python
 # Undirected Graph Implementation - Edge List
 def adjacent(graph, vertex1, vertex2):
     for e in range(0, len(graph)):
@@ -99,7 +99,7 @@ print("V4: " + str(neighbors(edgeList, 3)) )
 
 print(edgeList)
 
- ```
+```
 
 ### Adjacency List
 
