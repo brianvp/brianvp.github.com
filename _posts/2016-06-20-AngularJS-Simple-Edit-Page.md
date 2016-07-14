@@ -14,7 +14,7 @@ tags:
 ---
 
 This article demonstrates a simple edit page in Angular.
-I've created a [demo page](https://jsfiddle.net/brnvndr/44Let626/) using JSFiddle that implements the following:
+I've created a **[demo page](https://jsfiddle.net/brnvndr/44Let626/)** using JSFiddle that implements the following:
 
 - Binding a single entity to a set of HTML form inputs
 - View and Edit modes - hide the input fields in view mode
@@ -44,7 +44,7 @@ In angular, filters are used to manipulate displayed data, either to supress dat
 
 ```html
 
-{{manufacturer.creditLimit | Currency}}
+<span class="displayValue" ng-class="pageMode">{{manufacturer.creditLimit | currency}}</span>
 
 ```
 
