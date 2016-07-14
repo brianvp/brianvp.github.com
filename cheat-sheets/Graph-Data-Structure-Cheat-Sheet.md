@@ -1,3 +1,7 @@
+---
+title: Graph Data Structure Cheat Sheet
+layout: page
+---
 A graph is an abstract data type that consists of a finite set of vertices together with a set of edges connecting the vertices.
 
 ## terms
