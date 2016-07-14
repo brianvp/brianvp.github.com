@@ -42,11 +42,11 @@ These functions are responsible for setting the current editing mode, and managi
 
 In angular, filters are used to manipulate displayed data, either to supress data or to format data.  In this example we use a filter to format currency and phone numbers.  The currency filter is quite simple, simply specify the filter expression in the binding:
 
+{% raw %}
 ```html
-
 <span class="displayValue" ng-class="pageMode">{{manufacturer.creditLimit | currency}}</span>
-
 ```
+{% endraw %}
 
 Currency is one of a few default filters available in Angular. Others include:
 
@@ -81,9 +81,11 @@ productManagerApp.filter("telephone", function () {
 
 Here you specify the name of the filter `telephone`, then define a function that takes an input (bound data flowing through the filter) that returns a string output, in the desired display format.  Once this is defined, the filter can be used in bindings as follows:
 
+{% raw %}
 ```html
 <span class="displayValue" ng-class="pageMode">{{manufacturer.faxNumber | telephone}}</span>
 ```
+{% endraw %}
 
 This allows for very clean usage and keeps the formatting logic out of the controller and view.  
 
