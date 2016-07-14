@@ -13,9 +13,6 @@ tags:
   - CSS
 ---
 
-
-#AngularJS Simple Edit Page
-
 This article demonstrates a simple edit page in Angular.
 I've created a [demo page](https://jsfiddle.net/brnvndr/44Let626/) using JSFiddle that implements the following:
 
@@ -45,7 +42,7 @@ These functions are responsible for setting the current editing mode, and managi
 
 In angular, filters are used to manipulate displayed data, either to supress data or to format data.  In this example we use a filter to format currency and phone numbers.  The currency filter is quite simple, simply specify the filter expression in the binding:
 
-```
+```html
 {{manufacturer.creditLimit | Currency}}
 ``` 
 
