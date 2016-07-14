@@ -43,8 +43,10 @@ These functions are responsible for setting the current editing mode, and managi
 In angular, filters are used to manipulate displayed data, either to supress data or to format data.  In this example we use a filter to format currency and phone numbers.  The currency filter is quite simple, simply specify the filter expression in the binding:
 
 ```html
+
 {{manufacturer.creditLimit | Currency}}
-``` 
+
+```
 
 Currency is one of a few default filters available in Angular. Others include:
 
@@ -58,7 +60,7 @@ Unfortunately these filters don't work on input fields. To format data inside an
 
 We can also create custom filters, which I've done here for formatting telephone number using a sample filter from [Stackoverflow]( http://stackoverflow.com/a/12728924/24892).  To do this you call the filter function on the main app module:
 
-```
+```javascript
 productManagerApp.filter("telephone", function () {
     return function(telephone){
         if (!telephone)
@@ -79,7 +81,7 @@ productManagerApp.filter("telephone", function () {
 
 Here you specify the name of the filter `telephone`, then define a function that takes an input (bound data flowing through the filter) that returns a string output, in the desired display format.  Once this is defined, the filter can be used in bindings as follows:
 
-```
+```html
 <span class="displayValue" ng-class="pageMode">{{manufacturer.faxNumber | telephone}}</span>
 ```
 
@@ -101,13 +103,13 @@ To submit the form, we set the `ng-submit` attribute of the form to `saveManufac
 
 To prevent saving when validation fails, we use the `ng-disabled` attribute on the input button:
 
-```
+```html
 <button type="submit" class="editButton" ng-class="pageMode" form="manufacturerForm"  ng-disabled="manufacturerForm.$invalid">Save</button>
 ```
 
 This will visually disable the button as well as the `enter` submit action.  It is also a good idea to check the valid status in the controller function as well
 
-```
+```javascript
 $scope.saveManufacturer = function () {
     if ($scope.manufacturerForm.$valid) {
         $scope.manufacturerPrior = {};
@@ -120,7 +122,7 @@ A  word on button layout - for the `ng-submit` method to work, the button / inpu
 
 There are two types of validation on the page.  The first uses the `required` attribute, which is fairly straightforward.  To alert the user when they need to enter a required field, we place an error `span` after the form field, using the `ng-show` attribute:
 
-```
+```html
 <span class="error"  ng-show="manufacturerForm.nameInput.$error.required">Name field is required</span>
 ```   
 
