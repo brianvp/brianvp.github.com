@@ -3,6 +3,7 @@ title: 'AngularJS Introduction'
 date: 2016-05-16T00:00:00+00:00
 author: brianvp
 layout: post
+permalink: /2016/05/16/AngularJS-Introduction/
 categories:
   - Development
   - Projects

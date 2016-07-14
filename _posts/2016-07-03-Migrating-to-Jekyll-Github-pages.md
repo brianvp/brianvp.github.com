@@ -3,6 +3,7 @@ title: Migrating to Jekyll Github Pages
 date: 2016-07-03T02:18:54+00:00
 author: brianvp
 layout: post
+permalink: /2016/07/03/Migrating-to-Jekyll-Github-pages/
 categories:
   - General
 ---

@@ -3,6 +3,7 @@ title: 'AngularJS Simple Edit Page'
 date: 2016-06-20T00:00:00+00:00
 author: brianvp
 layout: post
+permalink: /2016/06/20/AngularJS-Simple-Edit-Page/
 categories:
   - Development
   - Projects

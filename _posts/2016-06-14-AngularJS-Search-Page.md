@@ -3,6 +3,7 @@ title: 'AngularJS Search Page'
 date: 2016-06-14T00:00:00+00:00
 author: brianvp
 layout: post
+permalink: /2016/06/14/AngularJS-Search-Page/
 categories:
   - Development
   - Projects
