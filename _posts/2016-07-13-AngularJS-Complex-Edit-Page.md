@@ -14,7 +14,6 @@ tags:
   - CSS
 ---
 
-#Angular JS complex Edit Page
 
 This article demonstrates a "complex" edit page in Angular.
 I've created a **[demo page](https://jsfiddle.net/brnvndr/vzwt1Ly3)** using JSFiddle.
