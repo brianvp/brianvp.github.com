@@ -7,7 +7,7 @@ permalink: /2016/09/21/Javascript-Promises/
 categories:
   - Research
 tags:
-  - Javascript
+  - JavaScript
   - Promise
 ---
 
