@@ -91,7 +91,7 @@ Pure pipes:
 
 - only runs when a **pure change** is made to the input value.  
 - a pure change is when a primitive type is updated, or a reference type is updated
-- a pure change does not include changes within an object e.g. `{{customer.name | uppercase}}` a change to name would not cause the filter to be re-evaluated, since this is inside the customer object. This is for performance reasons.
+- a pure change does not include changes within an object e.g. {% raw %}`{{customer.name | uppercase}}`{% endraw %} a change to name would not cause the filter to be re-evaluated, since this is inside the customer object. This is for performance reasons.
 
 Impure Pipes
 
