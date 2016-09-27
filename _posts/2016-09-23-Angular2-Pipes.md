@@ -24,32 +24,40 @@ Angular comes with a few standard pipes
 - Currency
 - Percent
 
+{% raw %}
+```
+{{ myValue | date}}
 
 ```
-{{ myValue | date}
+{% endraw %}
 
-```
 
 You pass parameters to the pipe with a `:`
 
+{% raw %}
 ```
 {{myValue | date:"shortDate"}}
 
 ```
+{% endraw %}
 
 The currency pipe requires multiple parameters, seperated by `:`
 - symbolDisplay - USD, EUR, etc
 - symbolDisplay - True to show $, False to show USD (false is the default)
 
+{% raw %}
 ```
 {{myValue | currency:"USD":true}}
 ```
+{% endraw %}
 
 It's simple to chain pipes:
 
+{% raw %}
 ```
 {{ myValue | uppercase | lowercase}}
 ```
+{% endraw %}
 
 If the built-in pipes do not meet your needs, you will need to process the data in the component, or create a custom pipe.  The angular team recommends handling expensive operations i.e. filtering in the component, instead of a pipe.   
 
@@ -61,6 +69,7 @@ To create the custom pipe you'll need to:
 
 Here is a basic pipe implementation:
 
+{% raw %}
 ```javascript
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -74,6 +83,7 @@ export class LastNameFirstPipe implements PipeTransform {
   }
 }
 ```
+{% endraw %}
 
 Notice the `pure` attribute.  Pipes in angular can be marked as `pure` or `unpure`
 
