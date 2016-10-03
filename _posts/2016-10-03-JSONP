@@ -1,0 +1,63 @@
+---
+title: 'JSONP'
+date: 2016-09-30T00:00:00+00:00
+author: brianvp
+layout: post
+permalink: /2016/10/03/JSONP/
+categories:
+  - Research
+tags:
+  - Angular2
+  - JSONP
+---
+
+Did a quick JSONP demo today, following the Angular2 [HTTP Client Docs](https://angular.io/docs/ts/latest/guide/server-communication.html), except I'm using stackoveflow as an API endpoint. 
+
+Essentially, JSONP is a method for working with API endpoints that come from outside our application. Most browsers do not let you make XHR (XMLHTTPRequest) calls outside of your application.  For example, `example.com/app` and `example.com/api` have the same `origin`, but `example.com/app` and `example.net/api` do not. This is called the [Same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy)
+
+The way JSONP works, is that browsers allow a `<script>` call to a remote resource with a different origin.  However, this isn't very useful by itself, because the return value will just sit in the DOM.  JSONP basically adds a callback function to the request, which will be called when the request resolves, and contain whatever payload the request generated (usually JSON). 
+
+```html
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+        function myCallback(data){
+            //do stuff with data
+        }
+        </script>
+        <script type="text/javascript" src="http://example.com/api/getStuff?callback=myCallback"></script>
+    </body>
+</html>
+```
+
+Angular's `JsonpModule` simplifies this - we don't need to define a script block, we just import the module and call as needed:
+
+```javascript
+import { Injectable } from '@angular/core';
+import { Jsonp, URLSearchParams } from '@angular/http';
+
+@Injectable()
+export class DataService {
+  constructor(private jsonp: Jsonp) {}
+  search (term: string) {
+    let apiUrl = 'http://example.com/api/getStuff';
+    let params = new URLSearchParams();
+    
+    params.set('callback', 'JSONP_CALLBACK');
+    
+    return this.jsonp
+               .get(apiUrl, { search: params })
+               .map(response => response.json());
+               
+  }
+}
+
+```
+
+Note that the `JSPONP_CALLBACK ` is required, but it is not the actual callback name at runtime. In testing the callback function was `__ng__jsonp__.__req23.finished()`, `__ng__jsonp__.__req24.finished()`, etc.   
+
+### Demo
+
+<iframe src="https://embed.plnkr.co/c5LZCksr27QTf9UEpneD/" width="100%" height="800"></iframe>
