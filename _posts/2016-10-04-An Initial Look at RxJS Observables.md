@@ -61,7 +61,7 @@ var source = Rx.Observable.create(function(observer){
 
 The observable is where the async operations happen.  At some point, the Observable needs to pass along some information to the `observer`.  This is done with the `.onNext()` function.  Notice that this is called multiple times. When this happens we say that we are **emitting** data to the observer.  It's the observer's job to decide what to do with this data, which is handled in the subscription:
 
-```Javascript
+```javascript
    source.subscribe(
     function(emittedValue){
         document.getElementById('subscriptionOneOutput').innerHTML += emittedValue + ', ';
@@ -70,7 +70,7 @@ The observable is where the async operations happen.  At some point, the Observa
 
 Each time `.onNext()` is called, the `function(emittedValue)` handler is called.  The observer defines three event handlers for `.onNext()`, `onError()`, and `onCompleted()`.  We can pass these inline to a `.subscribe()`, or create the observer directly:
 
-```Javascript
+```javascript
 Rx.Observer.create (function(emittedValue){
         document.getElementById('subscriptionTwoOutput').innerHTML += emittedValue + ', ';
     }, // onNext()
