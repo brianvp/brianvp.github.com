@@ -66,9 +66,9 @@ I'm not using karma for the demo code below, but it is a part of the [angular-cl
 
 ## Jasmine + Angular
 
-By itself, Jasmine know nothing about an Angular application, so we need to use Angular test infrastructure to make useful unit tests. 
+By itself, Jasmine knows nothing about an Angular application, so we need to use an Angular test infrastructure to make useful unit tests. 
 
-- Need to import all components / services that the test/spec(s) will be using
+- Need to import all components/services that the test/spec(s) will be using
 - use the global Jasmine function `beforeEach()` to initialize components.  `beforeEach()` runs before every individual `it()` execution.
 - some items such as pipes and services do not depend on the angular environment running, and can be tested with little setup in Jasmine, besides instantiating the class.
 - the primary class for interacting with the Angular environment is the `TestBed` class. This class is responsible for:
