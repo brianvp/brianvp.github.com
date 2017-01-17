@@ -30,7 +30,7 @@ What if we changed the URL a bit?  say to:
 
 With this change, the leading `/` indicates the root of the website.  It is still a relative path, but it is "relative" to the root of the website.  `http://example.com/libs/jquery.min.js` will still work, but `http://example.com/salesapp/libs/jquery.min.js` will not.  This can be a subtle error, as most applications run locally are sitting at `http://localhost:12345` or whatever, but many are not deployed to the web root.  
 
-Using the leading slash removes a lot of future flexibility.   So why would you want it?  Well, consider this scenario.  You have a script file that has a jquery dependency, which lives at http://example.com/salesapp/scripts/accounts.js.  This reference will no longer work:
+Using the leading slash removes a lot of future flexibility.   So why would you want it?  Well, consider this scenario.  You have a script file that has a jquery dependency, which lives at `http://example.com/salesapp/scripts/accounts.js`.  This reference will no longer work:
 
 ```
     <script src="libs/jquery.min.js" type="text/javascript"></script>
@@ -81,7 +81,7 @@ To set an application specific path, you could use:
 
 `libs/jquery.min.js` will be read as `/salesapp/libs/jquery.min.js`, and thus `http://example.com/salesapp/libs/jquery.min.js/`
 
-this works well when deploying to different endpoints as only the `<base>` reference need to change, which can be easily handled via a build system.  
+this works well when deploying to different endpoints as only the `<base>` reference needs to change, which can be easily handled via a build system.  
 
 Be careful though, specifing relative paths with the leading slash will *ignore* the specified `<base>`.
 
@@ -103,8 +103,8 @@ or
 
 Which is effectively the same as specifying no `<base>`.  You might use this for local development.
 
-Addtionally, you can dynamically write the `<base>` with a script, but doesnt appear to be a [recommended](http://stackoverflow.com/questions/3494954/how-do-i-set-a-pages-base-href-in-javascript) approach. It seems better to leave this up to your build / depolyment system.  
+Additionally, you can dynamically write the `<base>` with a script, but doesn't appear to be a [recommended](http://stackoverflow.com/questions/3494954/how-do-i-set-a-pages-base-href-in-javascript) approach. It seems better to leave this up to your build / depolyment system.  
 
-The good news is that broken paths are generally easy to detect when your browser is in development mode - just look for the red requests in the network tab, and check the path.  You'll know something is off when the path is partially correct, but contains additional levels or missing levels alltogether.   
+The good news is that broken paths are generally easy to detect when your browser is in development mode - just look for the red requests in the network tab, and check the path.  You'll know something is off when the path is partially correct, but contains additional levels or missing levels altogether.   
 
 
