@@ -21,7 +21,7 @@ You will need a few pieces of information from your AD FS administrator before p
 
 ## Setting up the Project
 
-1. Create a neww project using ASP.NET Web Application template
+1. Create a new project using ASP.NET Web Application template
 2. Check the MVC Template, and optionally click on the Web API checkbox
 ![visual studio new project templates adfs](/assets/visual_studio_new_project_templates_adfs.png)
 3. Click the "Change Authentication" box. 
@@ -76,6 +76,7 @@ HomeController.cs
 ```
 
 index.cshtml
+
 ```csharp
 <h3>Logged in User Claims:</h3>
 <table class="table table-condensed">
