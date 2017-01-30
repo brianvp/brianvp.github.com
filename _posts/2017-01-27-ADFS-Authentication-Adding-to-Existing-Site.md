@@ -3,7 +3,7 @@ title: 'ADFS Authentication - Adding to Existing Site'
 date: 2017-01-27T00:00:00+00:00
 author: brianvp
 layout: post
-permalink: /2017/01/27/ADFS-Authentication-Adding-to-Existing-Site.md/
+permalink: /2017/01/27/ADFS-Authentication-Adding-to-Existing-Site/
 categories:
   - General
 tags:
